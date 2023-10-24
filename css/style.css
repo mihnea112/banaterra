@@ -1,23 +1,105 @@
+@font-face {
+  font-family: "ClanProRegular";
+  src: url(../fonts/FFClanProRegular.TTF) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ClanProNews";
+  src: url(../fonts/FFClanProRgNews.TTF);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ClanProMedium";
+  src: url(../fonts/FFClanProMedium.TTF);
+  font-weight: normal;
+  font-style: normal;
+}
+
 .nav {
   background-color: #267347;
 }
+
+body{
+  font-family: 'ClanProRegular';
+
+}
+
 .header {
   width: 100%;
   display: flex;
   justify-content: center;
 }
+
 .header .col-md-4 {
   display: flex;
   justify-content: center;
 }
+
+.nav{
+  padding: 1% 0;
+}
+
+.white-txt{
+  color: white;
+}
+
+.white-txt:focus{
+  color:white;
+}
+
+.white-txt::-webkit-input-placeholder {
+  color: white;
+}
+
+.white-txt:-ms-input-placeholder {
+  color: white;
+}
+
+.white-txt:-moz-placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.white-txt::-moz-placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.no-out-focus:focus,
+.no-out-focus:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.logo-sm{
+  height: 40px;
+  aspect-ratio: 1;
+}
+
+.no-bg, .no-bg:focus, .no-bg:active{
+  box-sizing: unset;
+  background: none;
+  border:none;
+}
+
+.nav-item{
+  margin: 0 2%;
+}
+
 .banner img {
   width: 100%;
   height: auto;
 }
+
 .scroll{
     height: 50%;
     overflow: scroll;
 }
+
 footer{
     background-color: #000000;
     color: #ffffff;
