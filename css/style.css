@@ -22,3 +22,13 @@ footer{
     background-color: #000000;
     color: #ffffff;
 }
+.chooser{
+  display:inline;
+  justify-content: end;
+}
+.chooser .dropdown,button{
+  display: inline;
+}
+.autor img{
+  border-radius: 50%;
+}
