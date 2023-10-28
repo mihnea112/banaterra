@@ -19,7 +19,7 @@
   font-style: normal;
 }
 
-.news{
+.news, .newsfont{
   font-family: 'ClanProNews';
 }
 
@@ -134,15 +134,21 @@ img.autor {
   font-weight: bold;
 }
 
-.autor-born-died span {
+.autor-born-died span, .citate{
   font-size: small;
   font-weight:lighter;
 }
+
+
 
 .autor-born-died{
   border-style: solid;
   border-color: #000000;
   border-width: 0 1pt 0 0;
+}
+
+.no-border {
+  border-style: none;
 }
 
 .hello{
@@ -170,7 +176,7 @@ h4 {
   margin: 8% 0;
 }
 
-.sponsor h6{
+.sponsor h6, .mediumfont{
   font-family: "ClanProMedium";
 }
 
@@ -228,3 +234,23 @@ footer h6{
 
 
 
+/* AUTORI */
+.autori, .cont-5-padding{
+  padding:5%
+}
+
+.autor img {
+  width:100%;
+  max-width:205px;
+}
+
+.chooser{
+  text-align: end;
+  margin-bottom: 2%;
+}
+
+.chooser .btn{
+  margin: 1%;
+  border-style: solid!important;
+  border-width: 2px;
+}
