@@ -1,0 +1,46 @@
+.cerculete {
+    display:flex;
+}
+
+.cerculete div {
+    position: relative;
+    font-family: "ClanProMedium";
+    padding: 15%;
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 0.1em;
+}
+
+.cerculete span{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#cerc-1{
+    top:0;
+    left:0;
+    margin-bottom: 20%;
+}
+#cerc-2{
+    top:0;
+    left:10%;
+        margin-bottom: 20%;
+}
+#cerc-3{
+    margin-top: 20%;
+    top:20%;
+    left:-40%;
+}
+#cerc-4{
+    top: 0%;
+    left:-15%;
+    margin-bottom: 20%;
+}
+#cerc-5{
+    margin-top: 20%;
+    top:20%;
+    left:-60%;
+}

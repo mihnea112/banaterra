@@ -254,3 +254,31 @@ footer h6{
   border-style: solid!important;
   border-width: 2px;
 }
+
+
+/* DESPRE NOI */
+
+.page-heading {
+  font-family: "ClanProNews";
+}
+
+.cont-2-padding {
+  padding: 2%;
+}
+
+.banaterra{
+  background-color: white;
+}
+
+.banaterra h5 {
+  font-family: "ClanProMedium";
+}
+
+.banaterra p {
+  font-family: "ClanProNews";
+}
+
+.valori{
+  background-color: #f3e8d3;
+}
+
