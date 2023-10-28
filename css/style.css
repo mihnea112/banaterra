@@ -282,3 +282,19 @@ footer h6{
   background-color: #f3e8d3;
 }
 
+/* Topics */
+
+#select-topics {
+  font-size: xx-large;
+  line-height: 1.5;
+}
+
+.selected-topic {
+  text-decoration: underline;
+}
+
+.bborder{
+  border-bottom-style: solid;
+  border-width: 0.1em;
+  margin-top: 3%;
+}
