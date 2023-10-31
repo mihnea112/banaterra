@@ -266,7 +266,7 @@ footer h6{
   padding: 2%;
 }
 
-.banaterra{
+.banaterra, .white-bg{
   background-color: white;
 }
 
@@ -297,4 +297,9 @@ footer h6{
   border-bottom-style: solid;
   border-width: 0.1em;
   margin-top: 3%;
+  padding-bottom: 2%;
+}
+
+.after-sect-padding{
+  padding-bottom: 3%;
 }
