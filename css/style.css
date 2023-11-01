@@ -102,6 +102,14 @@ body{
   padding-top: 3%;
 }
 
+.top-5-margin{
+  margin-top: 5%;
+}
+
+.btm-5-margin{
+  margin-bottom: 5%;
+}
+
 .main-author h4{
   color:#ea5f50;
 }
@@ -258,9 +266,8 @@ footer h6{
 
 /* DESPRE NOI */
 
-.page-heading {
+.page-heading, .font-news {
   font-family: "ClanProNews";
-  background: white;
 }
 
 .cont-2-padding {
@@ -312,6 +319,64 @@ footer h6{
   padding:1% 3%;
 }
 
-.donate{
+.donate, .highlighted{
   background-color: #bcceff;
 }
+
+/* CONTUL MEU */
+.cont{
+  background-color: white;
+}
+
+.cell {
+  border-style: solid;
+  border-width: 1px;
+}
+
+form {
+  width: 70%;
+  margin: 2% 15%;
+}
+
+ .form-label {
+   display: block;
+   text-align: start;
+ }
+
+ .form-input, .select-input {
+   width: 100%;
+   border: none;
+   border-bottom: 1px solid #333;
+   background: transparent;
+   outline: none;
+ }
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-label{
+  width:25%;
+  display: flex;
+  align-items: center;
+}
+                 
+.checkbox-input {
+   margin-right: 10px;
+  }
+
+.btn-save {
+  background-color: black;
+  color: #fff;
+  padding: 5px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+ .btn-submit:hover {
+   background-color: #0056b3;
+ }
+
+ 
