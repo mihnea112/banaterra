@@ -32,8 +32,13 @@
 				<div class="col-md-4 col-sm-4 col-4">
 					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<option data-content="English">English</option>
-						<option data-content="Español">Español</option>
+						<?php
+						include "lang.php";
+						while($row= mysqli_fetch_assoc($result))
+						{
+							echo '<option data-content="'.$row["code"].'">'.$row["name"].'</option>';
+						}
+						?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -122,26 +127,18 @@
 					</div>
 					<div class="col-md-8">
 						<div class="row">
-							<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
-								<span class="citate">69 citate</span>
-								<h5>Stendhal</h5>
-							</div>
-							<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
-								<span class="citate">69 citate</span>
-								<h5>Stendhal</h5>
-							</div>
-							<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
-								<span class="citate">69 citate</span>
-								<h5>Stendhal</h5>
-							</div>
-							<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
-								<span class="citate">69 citate</span>
-								<h5>Stendhal</h5>
-							</div>
+
+						<?php
+							include "authorstoday.php";
+							while($row= mysqli_fetch_assoc($author_bd))
+							{
+							echo '<div class="col-md-3 autor-born-died">
+							<img src="images/test.jpg" alt="{autor name}" />
+							<span class="citate">'.$row["cnt"].' citate</span>
+							<h5>'.$row["name"].'</h5>
+							</div>';
+							}
+						?>
 						</div>
 					</div>
 				</div>
@@ -156,16 +153,17 @@
 					</div>
 					<div class="col-md-8">
 						<div class="row">
-							<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
-								<span class="citate">69 citate</span>
-								<h5>Stendhal</h5>
-							</div>
-							<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
-								<span class="citate">69 citate</span>
-								<h5>Stendhal</h5>
-							</div>
+						<?php
+							include "authorstoday.php";
+							while($row= mysqli_fetch_assoc($author_dd))
+							{
+							echo '<div class="col-md-3 autor-born-died">
+							<img src="images/test.jpg" alt="{autor name}" />
+							<span class="citate">'.$row["cnt"].' citate</span>
+							<h5>'.$row["name"].'</h5>
+							</div>';
+							}
+						?>
 						</div>
 					</div>
 				</div>
