@@ -73,7 +73,7 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
@@ -139,6 +139,7 @@
 							</div>';
 							}
 						?>
+						
 						</div>
 					</div>
 				</div>

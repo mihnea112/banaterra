@@ -1,0 +1,9 @@
+<?php
+include 'connection.php';
+$sql = "SELECT * FROM `autori`";
+$result = mysqli_query($conn, $sql);
+if(!mysqli_num_rows($result) > 0)
+{
+    echo mysqli_connect_error;
+}
+?>

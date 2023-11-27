@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -30,15 +40,10 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<?php
-						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
-						{
-							echo '<option data-content="'.$row["code"].'">'.$row["name"].'</option>';
-						}
-						?>
+						<option data-content="English">English</option>
+						<option data-content="Español">Español</option>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -73,10 +78,19 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.php">Authors</a>
+										<a class="nav-link white-txt" href="authors.html">Authors</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editAuthors.html">Edit Authors</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editTopics.html">Edit Topics</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editquotes.html">Edit Quotes</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="mm.html">MM</a>
@@ -91,69 +105,28 @@
 				</div>
 			</div>
 		</section>
-		<section class="autori">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4">
-						<h1>Authors</h1>
-					</div>
-					<div class="col-md-8 chooser">
-						<div class="dropdown">
-							<button
-								class="btn dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Popular authors
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						</div>
-						<div class="dropdown">
-							<button
-								class="btn dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton2"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Category
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Caca</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						</div>
-						<button class="btn dropdown-toggle" type="button">View all</button>
-						<button class="btn" type="button">Login</button>
-					</div>
-				</div>
-				<div class="row">
-					<?php
-							include "_authors.php";
-							while($row= mysqli_fetch_assoc($result))
-							{
-								if($row["active"]==1){
-								echo '<div class="col-md-3 col-lg-3 col-sm-6 col-6 autor autor-born-died no-border news-font">
-								<a href="/auth.php?id='.$row["id"].'"><img src="images/test.jpg" alt=""/></a>
-								<span class="citate"><br>'.$row["cnt"].' citate</span>
-								<a href="/auth.php?id='.$row["id"].'"><h5>'.$row["name"].'</h5></a>
-								<p>'.$row["about"].'</p>
-								</div>';
-								}
-							}
-						?>
-				</div>					
+
+		<!-- NAVBAR END -->
+
+		<!-- start MAIN PAGE CONTENT -->
+
+		<section class="cont">
+            <div class="container">
+                <?php 
+                    include "_authors.php";
+                    while($row= mysqli_fetch_assoc($result))
+					{
+                        echo '<div class="row"><div class="col-md-2"><p>'.$row["name"].'</p></div><div class="col-md-2"><p>'.$row["b_date"].'</p></div><div class="col-md-2"><p>'.$row["d_date"].'</p></div><div class="col-md-2"><p>'.$row["about"].'</p></div><div class="col-md-2"><a href=editAut.php?id='.$row["id"].'>Edit</a></div>';
+                    }
+                ?>
+                </div>
+            </div>
 		</section>
-		<section class="banner">
-			<img src="images/banner_despre.jpg" alt="" />
-		</section>
+
+		<!-- end MAIN PAGE CONTETN -->
+
+		<!-- FOOTER -->
+
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">
@@ -207,3 +180,5 @@
 		<script type="text/javascript" src="js/scripts.js"></script>
 	</body>
 </html>
+
+<!-- MATEI EDITED -->

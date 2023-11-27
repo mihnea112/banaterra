@@ -30,15 +30,10 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='login.php'"><i class="bi bi-person-circle"></i>Login</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<?php
-						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
-						{
-							echo '<option data-content="'.$row["code"].'">'.$row["name"].'</option>';
-						}
-						?>
+						<option data-content="English">English</option>
+						<option data-content="Español">Español</option>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -73,7 +68,7 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.php">Authors</a>
+										<a class="nav-link white-txt" href="authors.html">Authors</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
@@ -91,69 +86,68 @@
 				</div>
 			</div>
 		</section>
-		<section class="autori">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4">
-						<h1>Authors</h1>
-					</div>
-					<div class="col-md-8 chooser">
-						<div class="dropdown">
-							<button
-								class="btn dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Popular authors
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
+
+		<!-- NAVBAR END -->
+
+		<!-- start MAIN PAGE CONTENT -->
+
+		<section class="cont">
+			<div class="container cont-5-padding">
+				<div class="cell">
+					<section class="highlighted cont-2-padding">
+						<h1 class="page-heading">Contul meu</h1>
+					</section>
+					<section class="cont-2-padding text-center">
+						<h5 class="font-news top-5-margin btm-5-margin">Login</h5>
+						<form action="_register.php"  method = "POST">
+							<div class="form-group">
+								<label for="email" class="form-label">Email</label>
+								<input type="email" id="email" name="email" class="form-input" required />
 							</div>
-						</div>
-						<div class="dropdown">
-							<button
-								class="btn dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton2"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Category
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Caca</a>
-								<a class="dropdown-item" href="#">Something else here</a>
+							<div class="form-group">
+								<label for="password" class="form-label">Parola</label>
+								<input type="password" id="password" name="password" class="form-input" required />
 							</div>
-						</div>
-						<button class="btn dropdown-toggle" type="button">View all</button>
-						<button class="btn" type="button">Login</button>
-					</div>
+							<div class="form-group">
+								<label for="password-conf" class="form-label">Confirmati Parola</label>
+								<input type="password" id="password-conf" name="password-conf" class="form-input" required />
+							</div>
+                            <div class="form-group">
+								<label for="gender" class="form-label">Gender</label>
+								<select id="gender" name="gender" class="select-input">
+									<option value="1">Male</option>
+									<option value="0">Female</option>
+									<option value="2">Other</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="date" class="form-label">Data nasterii</label>
+								<input type="date" id="date" name="date" class="form-input" required />
+							</div>
+							<div class="form-group bborder">
+								<label for="languages" class="form-label">Known Languages</label>
+								<div class="checkbox-group">
+                                <?php
+						            include "lang.php";
+						            while($row= mysqli_fetch_assoc($result))
+                                        {
+                                            echo '<label class="checkbox-label">
+                                            <input type="checkbox" name="languages[]" value="'.$row["lang_id"].'" class="checkbox-input" />'.$row["name"].'</label>';
+                                        }
+						        ?>
+								</div>
+							</div>
+							<button type="submit" class="btn-submit">Sign Up</button>
+						</form>
+					</section>
 				</div>
-				<div class="row">
-					<?php
-							include "_authors.php";
-							while($row= mysqli_fetch_assoc($result))
-							{
-								if($row["active"]==1){
-								echo '<div class="col-md-3 col-lg-3 col-sm-6 col-6 autor autor-born-died no-border news-font">
-								<a href="/auth.php?id='.$row["id"].'"><img src="images/test.jpg" alt=""/></a>
-								<span class="citate"><br>'.$row["cnt"].' citate</span>
-								<a href="/auth.php?id='.$row["id"].'"><h5>'.$row["name"].'</h5></a>
-								<p>'.$row["about"].'</p>
-								</div>';
-								}
-							}
-						?>
-				</div>					
+			</div>
 		</section>
-		<section class="banner">
-			<img src="images/banner_despre.jpg" alt="" />
-		</section>
+
+		<!-- end MAIN PAGE CONTETN -->
+
+		<!-- FOOTER -->
+
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">
@@ -205,5 +199,27 @@
 			type="text/javascript"
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/scripts.js"></script>
+        <script>  
+            function validation()  
+            {  
+                var id=document.f1.email.value;  
+                var ps=document.f1.password.value;  
+                if(id.length=="" && ps.length=="") {  
+                    alert("User Name and Password fields are empty");  
+                    return false;  
+                }  
+                else  
+                {  
+                    if(id.length=="") {  
+                        alert("User Name is empty");  
+                        return false;  
+                    }   
+                    if (ps.length=="") {  
+                    alert("Password field is empty");  
+                    return false;  
+                    }  
+                }                             
+            }  
+        </script>  
 	</body>
 </html>

@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -30,7 +40,7 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 						<option data-content="English">English</option>
 						<option data-content="Español">Español</option>
@@ -68,10 +78,19 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editquotes.html">Edit Quotes</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="mm.html">MM</a>

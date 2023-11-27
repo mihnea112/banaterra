@@ -32,13 +32,8 @@
 				<div class="col-md-4 col-sm-4 col-4">
 					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<?php
-						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
-						{
-							echo '<option data-content="'.$row["code"].'">'.$row["name"].'</option>';
-						}
-						?>
+						<option data-content="English">English</option>
+						<option data-content="Español">Español</option>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -73,7 +68,7 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.php">Authors</a>
+										<a class="nav-link white-txt" href="authors.html">Authors</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
@@ -91,69 +86,34 @@
 				</div>
 			</div>
 		</section>
-		<section class="autori">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4">
-						<h1>Authors</h1>
-					</div>
-					<div class="col-md-8 chooser">
-						<div class="dropdown">
-							<button
-								class="btn dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Popular authors
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
+
+		<!-- NAVBAR END -->
+
+		<!-- start MAIN PAGE CONTENT -->
+
+		<section class="cont">
+			<div class="container cont-5-padding">
+				<div class="cell">
+					<section class="highlighted cont-2-padding">
+						<h1 class="page-heading">Contul meu</h1>
+					</section>
+					<section class="cont-2-padding text-center">
+						<h5 class="font-news top-5-margin btm-5-margin">Login</h5>
+						<form action="_login.php" method="post">
+							<div class="form-group">
+								<label for="email" class="form-label">Email</label>
+								<input type="email" id="email" name="email" class="form-input" required />
 							</div>
-						</div>
-						<div class="dropdown">
-							<button
-								class="btn dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton2"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Category
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Caca</a>
-								<a class="dropdown-item" href="#">Something else here</a>
+							<div class="form-group">
+								<label for="password" class="form-label">Password</label>
+								<input type="password" id="password" name="password" class="form-input" required />
 							</div>
-						</div>
-						<button class="btn dropdown-toggle" type="button">View all</button>
-						<button class="btn" type="button">Login</button>
-					</div>
-				</div>
-				<div class="row">
-					<?php
-							include "_authors.php";
-							while($row= mysqli_fetch_assoc($result))
-							{
-								if($row["active"]==1){
-								echo '<div class="col-md-3 col-lg-3 col-sm-6 col-6 autor autor-born-died no-border news-font">
-								<a href="/auth.php?id='.$row["id"].'"><img src="images/test.jpg" alt=""/></a>
-								<span class="citate"><br>'.$row["cnt"].' citate</span>
-								<a href="/auth.php?id='.$row["id"].'"><h5>'.$row["name"].'</h5></a>
-								<p>'.$row["about"].'</p>
-								</div>';
-								}
-							}
-						?>
-				</div>					
-		</section>
-		<section class="banner">
-			<img src="images/banner_despre.jpg" alt="" />
-		</section>
+							<button type="submit" class="btn-submit">Sign Up</button>
+						</form>
+					</section>
+
+		<!-- FOOTER -->
+
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">
@@ -204,6 +164,8 @@
 		<script
 			type="text/javascript"
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/scripts.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script> 
 	</body>
 </html>
+
+<!-- MATEI EDITED -->
