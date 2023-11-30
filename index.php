@@ -30,7 +30,7 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='login.php'"><i class="bi bi-person-circle"></i> Login</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 						<?php
 						include "lang.php";
@@ -127,19 +127,19 @@
 					</div>
 					<div class="col-md-8">
 						<div class="row">
-
 						<?php
 							include "authorstoday.php";
-							while($row= mysqli_fetch_assoc($author_bd))
-							{
-							echo '<div class="col-md-3 autor-born-died">
-							<img src="images/test.jpg" alt="{autor name}" />
-							<span class="citate">'.$row["cnt"].' citate</span>
-							<h5>'.$row["name"].'</h5>
-							</div>';
+							if(mysqli_num_rows($author_bd) > 0){
+								while($row=mysqli_fetch_assoc($author_bd))
+								{
+								echo '<div class="col-md-3 autor-born-died">
+								<img src="images/test.jpg" alt="{autor name}" />
+								<span class="citate">'.$row["cnt"].' citate</span>
+								<h5>'.$row["name"].'</h5>
+								</div>';
+								}
 							}
 						?>
-						
 						</div>
 					</div>
 				</div>
@@ -156,13 +156,15 @@
 						<div class="row">
 						<?php
 							include "authorstoday.php";
-							while($row= mysqli_fetch_assoc($author_dd))
-							{
-							echo '<div class="col-md-3 autor-born-died">
-							<img src="images/test.jpg" alt="{autor name}" />
-							<span class="citate">'.$row["cnt"].' citate</span>
-							<h5>'.$row["name"].'</h5>
-							</div>';
+							if(mysqli_num_rows($author_bd) > 0){
+								while($row= mysqli_fetch_assoc($author_dd))
+								{
+								echo '<div class="col-md-3 autor-born-died">
+								<img src="images/test.jpg" alt="{autor name}" />
+								<span class="citate">'.$row["cnt"].' citate</span>
+								<h5>'.$row["name"].'</h5>
+								</div>';
+								}
 							}
 						?>
 						</div>

@@ -78,10 +78,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editAuthors.html">Edit Authors</a>
+										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
@@ -112,11 +112,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 		<section class="cont">
             <div class="container">
+			<div class="row">
+					<div class="col-md-4">
+						<h1>Edit Authors</h1>
+					</div>
+					<div class="col-md-8 chooser">
+						<button class="btn dropdown-toggle" type="button" onclick="location.href='addAuthor.php'">Add Author</button>
+					</div>
+				</div>
                 <?php 
                     include "_authors.php";
                     while($row= mysqli_fetch_assoc($result))
 					{
-                        echo '<div class="row"><div class="col-md-2"><p>'.$row["name"].'</p></div><div class="col-md-2"><p>'.$row["b_date"].'</p></div><div class="col-md-2"><p>'.$row["d_date"].'</p></div><div class="col-md-2"><p>'.$row["about"].'</p></div><div class="col-md-2"><a href=editAut.php?id='.$row["id"].'>Edit</a></div>';
+                        echo '<div class="row"><div class="col-md-2"><p>'.$row["name"].'</p></div><div class="col-md-2"><p>'.$row["b_date"].'</p></div><div class="col-md-2"><p>'.$row["d_date"].'</p></div><div class="col-md-2"><p>'.$row["about"].'</p></div><div class="col-md-2"><a href="editAut.php?id='.$row["id"].'">Edit</a></div>';
                     }
                 ?>
                 </div>

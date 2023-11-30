@@ -90,9 +90,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editquotes.html">Edit Quotes</a>
-									</li>
-									<li class="nav-item">
 										<a class="nav-link white-txt" href="mm.html">MM</a>
 									</li>
 									<li class="nav-item">
