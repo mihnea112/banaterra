@@ -1,4 +1,14 @@
 <?php
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+	$link="login.php";
+	$text="Login";
+}
+else
+{
+	$link="_logout.php";
+	$text="Logout";
+}
 $auth_id=$_GET['id'];
 include 'connection.php';
 $sql = "SELECT * FROM autori WHERE id = $auth_id";
@@ -41,10 +51,15 @@ $result2=mysqli_query($conn, $sql2);
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+				<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<option data-content="English">English</option>
-						<option data-content="Español">Español</option>
+					<?php
+						include "lang.php";
+						while($row4= mysqli_fetch_assoc($result))
+						{
+							echo '<option data-content="'.$row4["code"].'">'.$row4["name"].'</option>';
+						}
+						?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -100,37 +115,79 @@ $result2=mysqli_query($conn, $sql2);
 			</div>
 		</section>
 
-		<section class="banaterra sect-padding after-sect-padding">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 main-author cont-2-padding">
-						<img src="images/test.jpg" class="autor" />
-						<h4 style="font-size: larger"><?php echo $row["name"]; ?></h4>
-						<p class=""><?php echo $row["about"];?></p>
-						<div class="attributes">
-							<span class="tag">Romana: 10</span>
-							<span class="tag">English: 100</span>
-							<span class="tag">German: 00</span>
+        <div class="white-bg">
+            <section class=" banner container sect-padding after-sect-padding">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1 class="page-heading "><?php echo $row["name"];?></h1>
+                        <p>born <b style="font-weight: 700;"><?php echo $row["name"];?></b>, (<?php echo $row["b_date"].",".$row["d_date"]?>)</p>
+                        <div class="attributes">
+                            <span class="tag">Romana: 10</span>
+                            <span class="tag">English: 100</span>
+                            <span class="tag">German: 00</span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 chooser">
+                        <div class="">
+                            <button class="btn" type="button" onclick="location.href='editAuthors.php?type=edit&id=<?php echo $auth_id;?>'">Edit Author</button>
+                            <button class="btn" type="button" onclick="location.href='editQuotes.php?type=edit&id=<?php echo $auth_id;?>'">Add Quotes</button>
+                            <button class="btn" type="button">Login</button>
+                        </div>
+                    </div>
+
+                </section>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="container sect-padding after-sect-padding">
+            <div class="row">
+                <div class="col-md-4 px-auto">
+                    <img src="images/test.jpg" alt="">
+                </div>
+                					<div class="col-md-8">
+						<div class="scroll white-bg cont-5-padding">
+							<?php
+							echo $row["about"];
+							?>
 						</div>
 					</div>
-					<div class="col-md-8">
+
+            </div>
+        </div>
+
+
+		<section class="banaterra sect-padding after-sect-padding">
+			<div class="container">
 						<?php
 						include 'connection.php';
 						while($row2= mysqli_fetch_assoc($result2))
-							{
+							{	
 								if($row["active"]==1){
-								echo '<p class="news">'.$row2["quote"].'</p>';
+								echo '<div class="row">
+								<div class="col-md-4 icons">
+									<i class="bi bi-share"></i>
+									
+									<i class="bi bi-heart"></i>
+			
+									<i class="bi bi-music-note-beamed"></i>
+			
+									<button class="btn" onclick="location.href='."'editQuotes.php?type=edit&id=".$row2["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button>
+								</div>
+								<div class="col-md-8">
+								<p class="news">'.$row2["quote"].'</p>';
 								$tag_id=$row2["tag_ids"];
 								$sql4="SELECT * FROM tag WHERE id = $tag_id";
 								$result4 = mysqli_query($conn, $sql4);
 								$rows= mysqli_fetch_assoc($result4);
 								echo '<div class="attributes">
-								<span class="tag">'.$rows["name"].'</span><hr/>';
+								<span class="tag">'.$rows["name"].'</span><hr/></div>
+								</div>';
 								}
 							}
 						?>
-					</div>
-				</div>
 			</div>
 		</section>
 

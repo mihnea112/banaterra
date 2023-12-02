@@ -81,13 +81,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
-									</li>
-									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="mm.html">MM</a>
@@ -114,21 +108,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 						<h1 class="page-heading">Contul meu</h1>
 					</section>
 					<section class="cont-2-padding text-center">
-						<h5 class="font-news top-5-margin btm-5-margin">Login</h5>
+						<h5 class="font-news top-5-margin btm-5-margin">Date</h5>
 						<form action="your_server_endpoint_here" method="post">
 							<div class="form-group">
-								<label for="username" class="form-label">Username</label>
-								<input type="text" id="username" name="username" class="form-input" required />
-							</div>
-							<div class="form-group">
 								<label for="email" class="form-label">Email</label>
-								<input type="email" id="email" name="email" class="form-input" required />
+								<input type="email" id="email" name="email" class="form-input" value="<?php echo $_SESSION["username"];?>"required />
 							</div>
-							<!-- <div class="form-group">
-								<label for="password" class="form-label">Password</label>
-								<input type="password" id="password" name="password" class="form-input" required />
-							</div> -->
-							<!-- <button type="submit" class="btn-submit">Sign Up</button> -->
 						</form>
 					</section>
 					<section class="cont-2-padding text-center highlighted">
@@ -142,11 +127,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 								<label for="password-conf" class="form-label">Confirmati</label>
 								<input type="password" id="password-conf" name="password-conf" class="form-input" required />
 							</div>
-							<!-- <div class="form-group">
-								<label for="password" class="form-label">Password</label>
-								<input type="password" id="password" name="password" class="form-input" required />
-							</div> -->
-							<!-- <button type="submit" class="btn-submit">Sign Up</button> -->
+							<button type="submit" class="btn-submit">Save</button>
 						</form>
 					</section>
 					<section class="cont-2-padding text-center">
@@ -164,142 +145,35 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 								<label for="date" class="form-label">Data nasterii</label>
 								<input type="date" id="date" name="date" class="form-input" required />
 							</div>
-							<div class="form-group">
-								<label for="country" class="form-label">Tara</label>
-								<select id="country" name="county" class="select-input form-input">
-									<option value="ro">Romania</option>
-									<option value="de">Germania</option>
-									<option value="ja">Japonia</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="lang" class="form-label">Tara</label>
-								<select id="lang" name="lang" class="select-input form-input">
-									<option value="ro">romana</option>
-									<option value="de">germana</option>
-									<option value="ja">japoneza</option>
-								</select>
-							</div>
-
 							<div class="form-group bborder">
 								<label for="languages" class="form-label">Known Languages</label>
 								<div class="checkbox-group">
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="english" class="checkbox-input" /> English
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="spanish" class="checkbox-input" /> Spanish
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="french" class="checkbox-input" /> French
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="german" class="checkbox-input" /> German
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="english" class="checkbox-input" /> English
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="spanish" class="checkbox-input" /> Spanish
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="french" class="checkbox-input" /> French
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="german" class="checkbox-input" /> German
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="english" class="checkbox-input" /> English
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="spanish" class="checkbox-input" /> Spanish
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="french" class="checkbox-input" /> French
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="languages[]" value="german" class="checkbox-input" /> German
-									</label>
-								</div>
-							</div>
-							<button type="submit" class="btn-save top-5-margin btm-5-margin">Sign Up</button>
-						</form>
-					</section>
-
-					<section class="cont-2-padding text-center highlighted">
-						<h5 class="font-news top-5-margin btm-5-margin">Interesele tale</h5>
-						<form action="your_server_endpoint_here" method="post">
-							<div class="form-group bborder">
-								<div class="checkbox-group">
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Dragoste
-									</label>
+								<?php
+						            include "lang.php";
+						            while($row= mysqli_fetch_assoc($result))
+						            {
+							            echo '<label class="checkbox-label">
+										<input type="radio" name="languages[]" value="'.$row["lang_id"].'" class="checkbox-input" />'.$row["name"].'</label>';
+						            }
+                                ?>
 								</div>
 							</div>
 							<button type="submit" class="btn-save top-5-margin btm-5-margin">Save</button>
 						</form>
 					</section>
-
 					<section class="cont-2-padding text-center ">
 						<h5 class="font-news top-5-margin btm-5-margin">Teme</h5>
 						<form action="your_server_endpoint_here" method="post">
 							<div class="form-group bborder">
 								<div class="checkbox-group">
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									<label class="checkbox-label">
-										<input type="checkbox" name="Dragoste" value="english" class="checkbox-input" /> Zilele Lumii
-									</label>
-									
+								<?php
+						            include "_tag.php";
+						            while($row= mysqli_fetch_assoc($result))
+						            {
+							            echo '<label class="checkbox-label">
+										<input type="checkbox" name="tag[]" value="'.$row["id"].'" class="checkbox-input" />'.$row["name"].'</label>';
+						            }
+                                ?>
 								</div>
 							</div>
 							<button type="submit" class="btn-save top-5-margin btm-5-margin">Save</button>

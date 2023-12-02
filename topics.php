@@ -1,3 +1,15 @@
+<?php 
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+	$link="login.php";
+	$text="Login";
+}
+else
+{
+	$link="_logout.php";
+	$text="Logout";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -30,10 +42,15 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<option data-content="English">English</option>
-						<option data-content="Español">Español</option>
+						<?php
+						include "lang.php";
+						while($row= mysqli_fetch_assoc($result))
+						{
+							echo '<option data-content="'.$row["code"].'">'.$row["name"].'</option>';
+						}
+						?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -68,16 +85,16 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
 								</ul>
 							</div>

@@ -18,7 +18,8 @@
             header("location:account.php")  ;
             session_start();
             $_SESSION["loggedin"] = true;
-            $_SESSION["username"] = $row["name"];
+            $_SESSION["username"] = $row["email"];
+            $_SESSION["id"]=$row["id"];
             $_SESSION["lang"] = $row["lang_id"];
             $_SESSION["role"] = $row["role"];
             }    

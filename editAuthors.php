@@ -7,6 +7,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+$type=$_GET["type"];
+$auth_id=$_GET["id"];
+if($type==="edit")
+{
+	include 'connection.php';
+	$sql = "SELECT * FROM autori WHERE id = $auth_id";
+	$result = mysqli_query($conn, $sql);
+	$row= mysqli_fetch_assoc($result);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,10 +96,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editTopics.html">Edit Topics</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="editquotes.html">Edit Quotes</a>
+										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="mm.html">MM</a>
@@ -111,26 +117,46 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		<!-- start MAIN PAGE CONTENT -->
 
 		<section class="cont">
-            <div class="container">
-			<div class="row">
-					<div class="col-md-4">
-						<h1>Edit Authors</h1>
-					</div>
-					<div class="col-md-8 chooser">
-						<button class="btn dropdown-toggle" type="button" onclick="location.href='addAuthor.php'">Add Author</button>
-					</div>
+			<div class="container cont-5-padding">
+				<div class="cell">
+					<section class="highlighted cont-2-padding">
+						<h1 class="page-heading"><?php echo $type;?> Authors</h1>
+					</section>
+					<section class="cont-2-padding text-center">
+						<form action="_editAuthors.php?type=<?php echo $type;?>&id=<?php echo $auth_id;?>" method="post">
+							<div class="form-group">
+								<label for="name" class="form-label">Nume</label>
+								<input type="text" id="name" name="name" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["name"].'"';}?>required />
+							</div>
+							<div class="form-group">
+								<label for="date" class="form-label">Data nasterii</label>
+								<input type="date" id="b_date" name="b_date" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["b_date"].'"';}?> required />
+							</div>
+							<div class="form-group">
+								<label for="date" class="form-label">Data decesului</label>
+								<input type="date" id="d_date" name="d_date" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["d_date"].'"';}?>required />
+							</div>
+							<div class="form-group">
+								<label for="username" class="form-label">Descriere</label>
+								<input type="text" id="about" name="about" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["about"].'"';}?> required />
+							</div>
+							<label for="languages" class="form-label">Limba</label>
+								<div class="checkbox-group">
+                                <?php
+						            include "lang.php";
+						            while($row= mysqli_fetch_assoc($result))
+						            {
+							            echo '<label class="checkbox-label">
+										<input type="radio" name="languages[]" value="'.$row["lang_id"].'" class="checkbox-input" />'.$row["name"].'</label>';
+						            }
+                                ?>
+								</div>
+							<button type="submit" class="btn-save top-5-margin btm-5-margin"><?php echo $type;?></button>
+						</form>
+					</section>
 				</div>
-                <?php 
-                    include "_authors.php";
-                    while($row= mysqli_fetch_assoc($result))
-					{
-                        echo '<div class="row"><div class="col-md-2"><p>'.$row["name"].'</p></div><div class="col-md-2"><p>'.$row["b_date"].'</p></div><div class="col-md-2"><p>'.$row["d_date"].'</p></div><div class="col-md-2"><p>'.$row["about"].'</p></div><div class="col-md-2"><a href="editAut.php?id='.$row["id"].'">Edit</a></div>';
-                    }
-                ?>
-                </div>
-            </div>
+			</div>	
 		</section>
-
 		<!-- end MAIN PAGE CONTETN -->
 
 		<!-- FOOTER -->
