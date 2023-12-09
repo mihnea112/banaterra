@@ -9,6 +9,7 @@ else
 	$link="_logout.php";
 	$text="Logout";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +45,14 @@ else
 				<div class="col-md-4 col-sm-4 col-4">
 					<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<?php
+					<?php
 						include "lang.php";
 						while($row= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row["code"].'">'.$row["name"].'</option>';
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
+								echo"selected";
+							echo '>'.$row["name"].'</option>';
 						}
 						?>
 					</select>
@@ -122,7 +126,8 @@ else
 								id="dropdownMenuButton"
 								data-toggle="dropdown"
 								aria-haspopup="true"
-								aria-expanded="false">
+								aria-expanded="false" 
+								onclick="location.href='topics.php'">
 								Vizualizati toate
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -162,162 +167,74 @@ else
 		<!-- start MAIN PAGE CONTENT -->
 
 		<section id="select-topics" class="cont-2-padding container">
-			<a class="topic-selector selected-topic" href="[SECIFC LINK]">Cunoastere de sine</a> /
-			<a class="topic-selector" href="[SPECIFC LINK]">Prietneie</a> /
-			<a class="topic-selector" href="[SPECIFC LINK]">Fericire</a> /
-			<a class="topic-selector" href="[SPECIFC LINK]">Intelepciune</a> /
-			<a class="topic-selector" href="[SPECIFC LINK]">Succes</a> /
+			<?php
+			include "_tag.php";
+			while($row=mysqli_fetch_assoc($result))
+			{
+				echo'<a class="topic-selector selected-topic" href="topics.php?id='.$row["id"].'">'.$row["name"].'</a> /';
+
+			}
+			?>
 		</section>
 
 		<section class="topics sect-padding">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-4 main-author bborder">
-						<img src="images/test.jpg" class="autor" />
-						<h4>Müller Péter</h4>
-						<div class="attributes">
-							<span class="tag">Cunoasterea naturii umane</span>
-							<span class="tag">Prietenie</span>
-							<span class="tag">Lorem ipsum</span>
+						<?php
+						$id=$_GET["id"];
+						include "connection.php";
+						if($id!=0)
+						{
+							$sql7="SELECT * FROM `quotes` WHERE `tag_ids`=$id";
+						}
+						else{
+							$sql7="SELECT * FROM `quotes`";
+						}
+						$result = mysqli_query($conn, $sql7);
+						while($row=mysqli_fetch_assoc($result))
+						{
+							echo'<div class="row">
+							<div class="col-md-4 main-author bborder">
+							<img src="images/test.jpg" class="autor" />
+							<h4>';
+								$author=$row["aut_id"];
+								$sql4="SELECT * FROM autori WHERE id = $author";
+								$result4 = mysqli_query($conn, $sql4);
+								$rows= mysqli_fetch_assoc($result4);
+								if($rows!=NULL){
+								echo $rows["name"];
+								}
+							echo '</h4>
+							<div class="attributes">';	
+							$tag_id=$row["tag_ids"];
+							$sql3="SELECT * FROM tag WHERE id = $tag_id";
+							$result3 = mysqli_query($conn, $sql3);
+							$rowss= mysqli_fetch_assoc($result3);
+							if($rowss!=NULL){
+								echo '<span class="tag">'.$rowss["name"].'</span>';
+							}
+							echo '</div>
+							<div class="action-btns">
+								<button class="btn">
+									<i class="bi bi-heart"></i>
+								</button>
+								<button class="btn">
+									<i class="bi bi-music-note-beamed"></i>
+								</button>
+								<button class="btn">
+									<i class="bi bi-share"></i>
+								</button>
+							</div>
 						</div>
-						<div class="action-btns">
-							<button class="btn">
-								<i class="bi bi-heart"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-music-note-beamed"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-share"></i>
-							</button>
-						</div>
-					</div>
-					<div class="col-md-7 bborder">
-						<p class="news">
-							O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații.
-							Filosofia, "iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și
-							înălțimea, atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi
-							sau a nu fi", în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre
-							individuale și colective sunt modelate de filosofiile noastre individuale și colective de viață.
-						</p>
-					</div>
-					<div class="col-md-1">
-						<button class="btn">
-							<i class="bi bi-pencil-square"> Edit</i>
-						</button>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-4 main-author bborder">
-						<img src="images/test.jpg" class="autor" />
-						<h4>Müller Péter</h4>
-						<div class="attributes">
-							<span class="tag">Cunoasterea naturii umane</span>
-							<span class="tag">Prietenie</span>
-							<span class="tag">Lorem ipsum</span>
-						</div>
-						<div class="action-btns">
-							<button class="btn">
-								<i class="bi bi-heart"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-music-note-beamed"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-share"></i>
-							</button>
-						</div>
-					</div>
-					<div class="col-md-7 bborder">
-						<p class="news">
-							O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații.
-							Filosofia, "iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și
-							înălțimea, atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi
-							sau a nu fi", în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre
-							individuale și colective sunt modelate de filosofiile noastre individuale și colective de viață.
-						</p>
-					</div>
-					<div class="col-md-1">
-						<button class="btn">
-							<i class="bi bi-pencil-square"> Edit</i>
-						</button>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-4 main-author bborder">
-						<img src="images/test.jpg" class="autor" />
-						<h4>Müller Péter</h4>
-						<div class="attributes">
-							<span class="tag">Cunoasterea naturii umane</span>
-							<span class="tag">Prietenie</span>
-							<span class="tag">Lorem ipsum</span>
-						</div>
-						<div class="action-btns">
-							<button class="btn">
-								<i class="bi bi-heart"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-music-note-beamed"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-share"></i>
-							</button>
-						</div>
-					</div>
-					<div class="col-md-7 bborder">
-						<p class="news">
-							O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații.
-							Filosofia, "iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și
-							înălțimea, atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi
-							sau a nu fi", în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre
-							individuale și colective sunt modelate de filosofiile noastre individuale și colective de viață.
-						</p>
-					</div>
-					<div class="col-md-1">
-						<button class="btn">
-							<i class="bi bi-pencil-square"> Edit</i>
-						</button>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-4 main-author bborder">
-						<img src="images/test.jpg" class="autor" />
-						<h4>Müller Péter</h4>
-						<div class="attributes">
-							<span class="tag">Cunoasterea naturii umane</span>
-							<span class="tag">Prietenie</span>
-							<span class="tag">Lorem ipsum</span>
-						</div>
-						<div class="action-btns">
-							<button class="btn">
-								<i class="bi bi-heart"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-music-note-beamed"></i>
-							</button>
-							<button class="btn">
-								<i class="bi bi-share"></i>
-							</button>
-						</div>
-					</div>
-					<div class="col-md-7 bborder">
-						<p class="news">
-							O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații.
-							Filosofia, "iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și
-							înălțimea, atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi
-							sau a nu fi", în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre
-							individuale și colective sunt modelate de filosofiile noastre individuale și colective de viață.
-						</p>
-					</div>
-					<div class="col-md-1">
-						<button class="btn">
-							<i class="bi bi-pencil-square"> Edit</i>
-						</button>
-					</div>
-				</div>
+						<div class="col-md-7 bborder">
+							<p class="news">'.$row["quote"].'</p>
+							</div>
+							<div class="col-md-1">
+								<button class="btn">
+									<i class="bi bi-pencil-square"> Edit</i>
+								</button>
+							</div>';
+						}
+						?>
 			</div>
 		</section>
 

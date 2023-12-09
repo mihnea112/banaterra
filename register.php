@@ -32,9 +32,16 @@
 				<div class="col-md-4 col-sm-4 col-4">
 					<button class="btn no-out-focus white-txt" onclick="location.href='login.php'"><i class="bi bi-person-circle"></i>Login</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<option data-content="English">English</option>
-						<option data-content="Español">Español</option>
-					</select>
+					<?php
+						include "lang.php";
+						while($row= mysqli_fetch_assoc($result))
+						{
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
+								echo"selected";
+							echo '>'.$row["name"].'</option>';
+						}
+						?>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
 					<img class="logo-sm" src="images/logo.jpg" />

@@ -55,9 +55,12 @@ $result2=mysqli_query($conn, $sql2);
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
-						while($row4= mysqli_fetch_assoc($result))
+						while($row10= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row4["code"].'">'.$row4["name"].'</option>';
+							echo '<option data-content="'.$row10["code"].'"';
+							if($_SESSION["lang"]===$row10["lang_id"])
+								echo"selected";
+							echo '>'.$row10["name"].'</option>';
 						}
 						?>
 					</select>
@@ -99,13 +102,13 @@ $result2=mysqli_query($conn, $sql2);
 										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
 								</ul>
 							</div>
@@ -131,7 +134,7 @@ $result2=mysqli_query($conn, $sql2);
                     <div class="col-lg-6 chooser">
                         <div class="">
                             <button class="btn" type="button" onclick="location.href='editAuthors.php?type=edit&id=<?php echo $auth_id;?>'">Edit Author</button>
-                            <button class="btn" type="button" onclick="location.href='editQuotes.php?type=edit&id=<?php echo $auth_id;?>'">Add Quotes</button>
+                            <button class="btn" type="button" onclick="location.href='editQuotes.php?type=add&id=<?php echo $auth_id;?>'">Add Quotes</button>
                             <button class="btn" type="button">Login</button>
                         </div>
                     </div>
@@ -147,14 +150,13 @@ $result2=mysqli_query($conn, $sql2);
                 <div class="col-md-4 px-auto">
                     <img src="images/test.jpg" alt="">
                 </div>
-                					<div class="col-md-8">
+                	<div class="col-md-8">
 						<div class="scroll white-bg cont-5-padding">
 							<?php
 							echo $row["about"];
 							?>
-						</div>
 					</div>
-
+				</div>
             </div>
         </div>
 
@@ -165,7 +167,7 @@ $result2=mysqli_query($conn, $sql2);
 						include 'connection.php';
 						while($row2= mysqli_fetch_assoc($result2))
 							{	
-								if($row["active"]==1){
+								if($row2["active"]==1){
 								echo '<div class="row">
 								<div class="col-md-4 icons">
 									<i class="bi bi-share"></i>
@@ -182,9 +184,11 @@ $result2=mysqli_query($conn, $sql2);
 								$sql4="SELECT * FROM tag WHERE id = $tag_id";
 								$result4 = mysqli_query($conn, $sql4);
 								$rows= mysqli_fetch_assoc($result4);
+								if($rows!=NULL){
 								echo '<div class="attributes">
 								<span class="tag">'.$rows["name"].'</span><hr/></div>
 								</div>';
+								}
 								}
 							}
 						?>

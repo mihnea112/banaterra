@@ -16,6 +16,9 @@ if($types==="edit")
     $result = mysqli_query($conn, $sql);
     $row3= mysqli_fetch_assoc($result);
 }
+else{
+	$row3['aut_id']=$quote_id;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,8 +54,16 @@ if($types==="edit")
 				<div class="col-md-4 col-sm-4 col-4">
 					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<option data-content="English">English</option>
-						<option data-content="Español">Español</option>
+					<?php
+						include "lang.php";
+						while($row= mysqli_fetch_assoc($result))
+						{
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
+								echo"selected";
+							echo '>'.$row["name"].'</option>';
+						}
+						?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">

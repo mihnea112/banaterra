@@ -9,6 +9,11 @@ else
 	$link="_logout.php";
 	$text="Logout";
 }
+if($_SESSION["role"]=="0"){
+	$role='<li class="nav-item">
+	<a class="nav-link white-txt" href="roles.php">Roles</a>
+</li>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +53,10 @@ else
 						include "lang.php";
 						while($row= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row["code"].'">'.$row["name"].'</option>';
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
+								echo"selected";
+							echo '>'.$row["name"].'</option>';
 						}
 						?>
 					</select>
@@ -96,6 +104,7 @@ else
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>
@@ -144,8 +153,9 @@ else
 							if(mysqli_num_rows($author_bd) > 0){
 								while($row=mysqli_fetch_assoc($author_bd))
 								{
+									$link=$row["id"];
 								echo '<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
+								<a href="auth.php?id='.$link.'"><img src="images/test.jpg" alt="{autor name}" /></a>
 								<span class="citate">'.$row["cnt"].' citate</span>
 								<h5>'.$row["name"].'</h5>
 								</div>';
@@ -171,8 +181,9 @@ else
 							if(mysqli_num_rows($author_bd) > 0){
 								while($row= mysqli_fetch_assoc($author_dd))
 								{
+									$link=$row["id"];
 								echo '<div class="col-md-3 autor-born-died">
-								<img src="images/test.jpg" alt="{autor name}" />
+								<a href="auth.php?id='.$link.'"><img src="images/test.jpg" alt="{autor name}" /></a>
 								<span class="citate">'.$row["cnt"].' citate</span>
 								<h5>'.$row["name"].'</h5>
 								</div>';

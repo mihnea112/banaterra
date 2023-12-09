@@ -51,8 +51,16 @@ if($type==="edit")
 				<div class="col-md-4 col-sm-4 col-4">
 					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<option data-content="English">English</option>
-						<option data-content="Español">Español</option>
+					<?php
+						include "lang.php";
+						while($row10= mysqli_fetch_assoc($result))
+						{
+							echo '<option data-content="'.$row10["code"].'"';
+							if($_SESSION["lang"]===$row10["lang_id"])
+								echo"selected";
+							echo '>'.$row10["name"].'</option>';
+						}
+						?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">

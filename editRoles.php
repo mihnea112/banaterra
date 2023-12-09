@@ -1,3 +1,34 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+$type=$_GET["type"];
+$role_id=$_GET["id"];
+if($type==="edit")
+{
+	include 'connection.php';
+	$sql = "SELECT * FROM roles WHERE id = $role_id";
+	$result = mysqli_query($conn, $sql);
+	$row= mysqli_fetch_assoc($result);
+    if($row["edit"]=="1")
+    {
+        $edit="checked";
+    }
+    if($row["plus"]=="1")
+    {
+        $add="checked";
+    }
+    if($row["del"]=="1")
+    {
+        $delete="checked";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -30,16 +61,16 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
+						while($row10= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row["code"].'"';
-							if($_SESSION["lang"]===$row["lang_id"])
+							echo '<option data-content="'.$row10["code"].'"';
+							if($_SESSION["lang"]===$row10["lang_id"])
 								echo"selected";
-							echo '>'.$row["name"].'</option>';
+							echo '>'.$row10["name"].'</option>';
 						}
 						?>
 					</select>
@@ -76,10 +107,16 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="topics.html">Topics</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="mm.html">MM</a>
@@ -103,22 +140,55 @@
 			<div class="container cont-5-padding">
 				<div class="cell">
 					<section class="highlighted cont-2-padding">
-						<h1 class="page-heading">Contul meu</h1>
+						<h1 class="page-heading"><?php echo $type;?> Roles</h1>
 					</section>
 					<section class="cont-2-padding text-center">
-						<h5 class="font-news top-5-margin btm-5-margin">Login</h5>
-						<form action="_login.php" method="post">
+						<form action="_editRoles.php?type=<?php echo $type;?>&id=<?php echo $role_id;?>" method="post">
 							<div class="form-group">
-								<label for="email" class="form-label">Email</label>
-								<input type="email" id="email" name="email" class="form-input" required />
+								<label for="name" class="form-label">Nume</label>
+								<input type="text" id="name" name="name" class="form-input" <?php if($role_id!=0){echo 'value="'.$row["name"].'"';}?>required />
 							</div>
-							<div class="form-group">
-								<label for="password" class="form-label">Password</label>
-								<input type="password" id="password" name="password" class="form-input" required />
-							</div>
-							<button type="submit" class="btn-submit">Sign Up</button>
+							<label for="add" class="form-label">Add
+								<input type="checkbox" id="add" name="add" class="checkbox-input" value="1"  <?php echo $add;?>/></label>
+                            <label for="edit" class="form-label">Edit
+								<input type="checkbox" id="edit" name="edit" class="checkbox-input" value="1"   <?php echo $edit;?>/></label>
+                            <label for="delete" class="form-label">Delete
+								<input type="checkbox" id="delete" name="delete" class="checkbox-input" value="1" <?php echo $delete;?>/></label>
+							<label for="languages" class="form-label">Limba</label>
+								<div class="checkbox-group">
+                                <?php
+						            include "lang.php";
+						            while($row4= mysqli_fetch_assoc($result))
+						            {
+                                        if($row["lang"]==$row4["lang_id"]){
+                                            $ch="checked";
+                                        }
+							            echo '<label class="checkbox-label">
+										<input type="radio" name="languages[]" value="'.$row4["lang_id"].'" class="checkbox-input"'.$ch.' />'.$row4["name"].'</label>';
+						            }
+                                ?>
+								</div>
+                            <label for="tag" class="form-label">Tag</label>
+								<div class="checkbox-group">
+                                <?php
+						            include "_tag.php";
+						            while($row2= mysqli_fetch_assoc($result))
+						            {
+                                        if($row["tag"]==$row2["id"]){
+                                            $ch2="checked";
+                                        }
+							            echo '<label class="checkbox-label">
+										<input type="radio" name="tag[]" value="'.$row2["id"].'" class="checkbox-input"'.$ch2.' />'.$row2["name"].'</label>';
+						            }
+                                ?>
+								</div>
+							<button type="submit" class="btn-save top-5-margin btm-5-margin"><?php echo $type;?></button>
 						</form>
 					</section>
+				</div>
+			</div>	
+		</section>
+		<!-- end MAIN PAGE CONTETN -->
 
 		<!-- FOOTER -->
 
@@ -172,7 +242,7 @@
 		<script
 			type="text/javascript"
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/scripts.js"></script> 
+		<script type="text/javascript" src="js/scripts.js"></script>
 	</body>
 </html>
 

@@ -1,3 +1,23 @@
+<?php
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+	$link="login.php";
+	$text="Login";
+}
+else
+{
+	$link="_logout.php";
+	$text="Logout";
+}
+include 'connection.php';
+$sql = "SELECT * FROM roles";
+$resultsss = mysqli_query($conn, $sql);
+if($_SESSION["role"]!="0"){
+	header("location: index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -20,6 +40,7 @@
 			type="text/css"
 			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/cerculete.css" />
 		<script
 			defer
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -30,16 +51,16 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+				<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
+						while($row10= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row["code"].'"';
-							if($_SESSION["lang"]===$row["lang_id"])
+							echo '<option data-content="'.$row10["code"].'"';
+							if($_SESSION["lang"]===$row10["lang_id"])
 								echo"selected";
-							echo '>'.$row["name"].'</option>';
+							echo '>'.$row10["name"].'</option>';
 						}
 						?>
 					</select>
@@ -49,7 +70,9 @@
 				</div>
 				<div class="col-md-4 col-4 d-none d-md-block">
 					<form class="d-flex" role="search">
-						<button class="btn no-bg no-out-focus white-txt" type="submit"><i class="bi bi-search"></i></button>
+						<button class="btn no-bg no-out-focus white-txt" type="submit">
+							<i class="bi bi-search"></i>
+						</button>
 						<input
 							class="form-control me-2 no-out-focus no-bg white-txt"
 							type="search"
@@ -76,16 +99,16 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
 								</ul>
 							</div>
@@ -95,41 +118,39 @@
 			</div>
 		</section>
 
-		<!-- NAVBAR END -->
-
-		<!-- start MAIN PAGE CONTENT -->
-
-		<section class="cont">
-			<div class="container cont-5-padding">
-				<div class="cell">
-					<section class="highlighted cont-2-padding">
-						<h1 class="page-heading">Contul meu</h1>
-					</section>
-					<section class="cont-2-padding text-center">
-						<h5 class="font-news top-5-margin btm-5-margin">Login</h5>
-						<form action="_login.php" method="post">
-							<div class="form-group">
-								<label for="email" class="form-label">Email</label>
-								<input type="email" id="email" name="email" class="form-input" required />
-							</div>
-							<div class="form-group">
-								<label for="password" class="form-label">Password</label>
-								<input type="password" id="password" name="password" class="form-input" required />
-							</div>
-							<button type="submit" class="btn-submit">Sign Up</button>
-						</form>
-					</section>
-
-		<!-- FOOTER -->
+		<section class="banaterra sect-padding after-sect-padding">
+			<div class="container">
+						<?php
+						include 'connection.php';
+						while($row= mysqli_fetch_assoc($resultsss))
+							{	
+                                $tag_id=$row["tag"];
+								$sql4="SELECT * FROM tag WHERE id = $tag_id";
+								$result4 = mysqli_query($conn, $sql4);
+								$rows= mysqli_fetch_assoc($result4);
+                                $lang_id=$row["lang"];
+								$sql5="SELECT * FROM lang WHERE lang_id = $lang_id";
+								$result5 = mysqli_query($conn, $sql5);
+								$rowss= mysqli_fetch_assoc($result5);
+								echo '<div class="row">
+								<div class="col-md-4 icons">
+									<button class="btn" onclick="location.href='."'editRoles.php?type=edit&id=".$row["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button>
+								</div>
+								<div class="col-md-8">
+								<p class="news">Name:'.$row["name"].'<br>Edit:'.$row["edit"].'<br>Add:'.$row["plus"].'<br>Delete:'.$row["del"].'<br>Language:'.$rowss["name"].'<br>Tag:'.$rows["name"].'</p></div>';
+							}
+						?>
+			</div>
+		</section>
 
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">
 					<div class="col-md-3">
-						<h3>
+						<h5>
 							Fa parte din lumea <br />
 							BanaTerra
-						</h3>
+						</h5>
 						<img src="" />
 					</div>
 					<div class="col-md-3">
@@ -172,8 +193,6 @@
 		<script
 			type="text/javascript"
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/scripts.js"></script> 
+		<script type="text/javascript" src="js/scripts.js"></script>
 	</body>
 </html>
-
-<!-- MATEI EDITED -->
