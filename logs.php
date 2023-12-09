@@ -1,22 +1,23 @@
 <?php
-// Initialize the session
 session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+	$link="login.php";
+	$text="Login";
+}
+else
+{
+	$link="_logout.php";
+	$text="Logout";
+}
+include 'connection.php';
+$sql = "SELECT * FROM logs ORDER BY `logs`.`date` ASC";
+$resultsss = mysqli_query($conn, $sql);
+if($_SESSION["role"]!="0"){
+	header("location: index.php");
     exit;
 }
-$type=$_GET["type"];
-$auth_id=$_GET["id"];
-if($type==="edit")
-{
-	include 'connection.php';
-	$sql = "SELECT * FROM autori WHERE id = $auth_id";
-	$result = mysqli_query($conn, $sql);
-	$row= mysqli_fetch_assoc($result);
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -39,6 +40,7 @@ if($type==="edit")
 			type="text/css"
 			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/cerculete.css" />
 		<script
 			defer
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -49,7 +51,7 @@ if($type==="edit")
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
+				<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
@@ -68,7 +70,9 @@ if($type==="edit")
 				</div>
 				<div class="col-md-4 col-4 d-none d-md-block">
 					<form class="d-flex" role="search">
-						<button class="btn no-bg no-out-focus white-txt" type="submit"><i class="bi bi-search"></i></button>
+						<button class="btn no-bg no-out-focus white-txt" type="submit">
+							<i class="bi bi-search"></i>
+						</button>
 						<input
 							class="form-control me-2 no-out-focus no-bg white-txt"
 							type="search"
@@ -98,19 +102,13 @@ if($type==="edit")
 										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
 								</ul>
 							</div>
@@ -120,66 +118,43 @@ if($type==="edit")
 			</div>
 		</section>
 
-		<!-- NAVBAR END -->
-
-		<!-- start MAIN PAGE CONTENT -->
-
-		<section class="cont">
-			<div class="container cont-5-padding">
-				<div class="cell">
-					<section class="highlighted cont-2-padding">
-						<h1 class="page-heading"><?php echo $type;?> Authors</h1>
-					</section>
-					<section class="cont-2-padding text-center">
-						<form action="_editAuthors.php?type=<?php echo $type;?>&id=<?php echo $auth_id;?>" method="post">
-							<div class="form-group">
-								<label for="name" class="form-label">Nume</label>
-								<input type="text" id="name" name="name" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["name"].'"';}?>required />
-							</div>
-							<div class="form-group">
-								<label for="date" class="form-label">Data nasterii</label>
-								<input type="date" id="b_date" name="b_date" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["b_date"].'"';}?> required />
-							</div>
-							<div class="form-group">
-								<label for="date" class="form-label">Data decesului</label>
-								<input type="date" id="d_date" name="d_date" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["d_date"].'"';}?>required />
-							</div>
-							<div class="form-group">
-								<label for="username" class="form-label">Descriere</label>
-								<input type="text" id="about" name="about" class="form-input" <?php if($auth_id!=0){echo 'value="'.$row["about"].'"';}?> required />
-							</div>
-							<label for="languages" class="form-label">Limba</label>
-								<div class="checkbox-group">
-                                <?php
-						            include "lang.php";
-						            while($rows= mysqli_fetch_assoc($result))
-						            {
-							            echo '<label class="checkbox-label">
-										<input type="radio" name="languages[]" value="'.$rows["lang_id"].'" class="checkbox-input"';
-										if($row["lang_id"]===$rows["lang_id"])
-											echo"checked";
-										echo '/>'.$rows["name"].'</label>';
-						            }
-                                ?>
-								</div>
-							<button type="submit" class="btn-save top-5-margin btm-5-margin"><?php echo $type;?></button>
-						</form>
-					</section>
-				</div>
-			</div>	
+		<section class="banaterra sect-padding after-sect-padding">
+			<div class="container">
+            <table>
+                <tr>
+                    <th><h5>Action Type</h5></th>
+                    <th><h5>Action</h5></th>
+                    <th><h5>Location</h5></th>
+                    <th><h5>Language</h5></th>
+					<th><h5>User ID</h5></th>
+                    <th><h5>Date</h5></th>
+                </tr>
+						<?php
+						include 'connection.php';
+						while($row= mysqli_fetch_assoc($resultsss))
+							{	
+                            echo '<tr>
+                                    <th>'.$row["action_type"].'</th>
+                                    <th>'.$row["action"].'</th>
+                                    <th>'.$row["location"].'</th>
+                                    <th>'.$row["lang"].'</th>
+									<th>'.$row["user_id"].'</th>
+                                    <th>'.$row["date"].'</th>
+                                </tr>';
+							}
+						?>
+            </table> 
+			</div>
 		</section>
-		<!-- end MAIN PAGE CONTETN -->
-
-		<!-- FOOTER -->
 
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">
 					<div class="col-md-3">
-						<h3>
+						<h5>
 							Fa parte din lumea <br />
 							BanaTerra
-						</h3>
+						</h5>
 						<img src="" />
 					</div>
 					<div class="col-md-3">
@@ -225,5 +200,3 @@ if($type==="edit")
 		<script type="text/javascript" src="js/scripts.js"></script>
 	</body>
 </html>
-
-<!-- MATEI EDITED -->

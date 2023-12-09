@@ -148,11 +148,11 @@ else{
 							            echo '<label class="checkbox-label">
 										<input type="radio" name="languages[]" value="'.$row["lang_id"].'" class="checkbox-input" ';
                                         if($row["lang_id"]==$row3["lang_id"]){
-                                            echo'checked />'.$row["name"].'</label>';
+                                            echo'checked  required/>'.$row["name"].'</label>';
                                         }
                                         else
                                         {
-                                            echo' />'.$row["name"].'</label>';
+                                            echo' required/>'.$row["name"].'</label>';
                                         }
                                         
 						            }

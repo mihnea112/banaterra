@@ -120,6 +120,14 @@ if($_SESSION["role"]!="0"){
 
 		<section class="banaterra sect-padding after-sect-padding">
 			<div class="container">
+			<div class="row">
+					<div class="col-md-4">
+						<h1>Roles</h1>
+					</div>
+					<div class="col-md-8 chooser">
+						<button class="btn" type="button" onclick="location.href='editRoles.php?type=add&id=0'">Add Roles</button>
+					</div>
+				</div>
 						<?php
 						include 'connection.php';
 						while($row= mysqli_fetch_assoc($resultsss))
@@ -137,7 +145,7 @@ if($_SESSION["role"]!="0"){
 									<button class="btn" onclick="location.href='."'editRoles.php?type=edit&id=".$row["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button>
 								</div>
 								<div class="col-md-8">
-								<p class="news">Name:'.$row["name"].'<br>Edit:'.$row["edit"].'<br>Add:'.$row["plus"].'<br>Delete:'.$row["del"].'<br>Language:'.$rowss["name"].'<br>Tag:'.$rows["name"].'</p></div>';
+								<p class="news">Name:'.$row["name"].'<br>Edit:'.$row["edit"].'<br>Add:'.$row["plus"].'<br>Delete:'.$row["del"].'<br>Language:'.$rowss["name"].'<br>Tag:'.$rows["name"].'</p></div></div>';
 							}
 						?>
 			</div>

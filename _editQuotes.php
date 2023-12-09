@@ -9,12 +9,19 @@ $quote = $_POST['quote'];
 $lang=$_POST['languages'];
 $tag=$_POST['tag'];
 $user_id=$_SESSION["id"];
+if($tag==NULL)
+{
+    $tag[0]=0;
+}
 if($type==="edit")
 {
     $sql="UPDATE `quotes` SET `quote`='$quote',`tag_ids`='$tag[0]',`aut_id`='$auth_id',`user_id`='$user_id', `lang_id`='$lang[0]' WHERE `id`=$quote_id";
     $result = mysqli_query($conn, $sql);
-    echo $result;
+    $sql3="INSERT INTO `logs`(`action_type`, `location`, `action`, `lang`, `user_id`) VALUES ('$type','Quotes','$quote','$lang[0]','$user_id')";
+    $result3 = mysqli_query($conn, $sql3);
+    if($result3===TRUE){
     header("location:auth.php?id=$auth_id");
+    }
 }
 else
 {
@@ -24,8 +31,11 @@ else
     if($result2===TRUE)
     {
         $result = mysqli_query($conn, $sql);
-        echo $result;
+        $sql3="INSERT INTO `logs`(`action_type`, `location`, `action`, `lang`, `user_id`) VALUES ('$type','Quotes','$quote','$lang[0]','$user_id')";
+        $result3 = mysqli_query($conn, $sql3);
+        if($result3===TRUE){
         header("location:auth.php?id=$auth_id");
+        }
     }
 }
 ?>

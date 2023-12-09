@@ -229,7 +229,7 @@ else
 							<p class="news">'.$row["quote"].'</p>
 							</div>
 							<div class="col-md-1">
-								<button class="btn">
+								<button class="btn" onclick="location.href='."'editQuotes.php?type=edit&id=".$row["id"]."'".'">
 									<i class="bi bi-pencil-square"> Edit</i>
 								</button>
 							</div>';
