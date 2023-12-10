@@ -7,6 +7,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+if($_SESSION["role"]=="0"){
+	$role='<li class="nav-item">
+	<a class="nav-link white-txt" href="logs.php">Logs</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link white-txt" href="users.php">Users</a>
+</li>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,6 +105,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="learn.html">Learn</a>
 									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>

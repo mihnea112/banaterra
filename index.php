@@ -12,6 +12,9 @@ else
 if($_SESSION["role"]=="0"){
 	$role='<li class="nav-item">
 	<a class="nav-link white-txt" href="roles.php">Roles</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link white-txt" href="account.php">Account</a>
 </li>';
 }
 ?>
