@@ -8,13 +8,13 @@ else
 {
 	$link="_logout.php";
 	$text="Logout";
+	$logged='<li class="nav-item">
+	<a class="nav-link white-txt" href="account.php">Account</a>
+</li>';
 }
 if($_SESSION["role"]=="0"){
 	$role='<li class="nav-item">
 	<a class="nav-link white-txt" href="roles.php">Roles</a>
-</li>
-<li class="nav-item">
-	<a class="nav-link white-txt" href="account.php">Account</a>
 </li>';
 }
 ?>
@@ -107,7 +107,7 @@ if($_SESSION["role"]=="0"){
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
-									<?php echo $role?>
+									<?php echo $role.$logged;?>
 								</ul>
 							</div>
 						</div>
@@ -258,22 +258,93 @@ if($_SESSION["role"]=="0"){
 						<p>We are proud to collaborate with companies that value sharing and supporting values.</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-3 sponsor">
-						<h6>A&C Consulting Center</h6>
-						<span>accc.ro</span>
-					</div>
-					<div class="col-md-3 sponsor">
-						<h6>A&C Consulting Center</h6>
-						<span>accc.ro</span>
-					</div>
-					<div class="col-md-3 sponsor">
-						<h6>A&C Consulting Center</h6>
-						<span>accc.ro</span>
-					</div>
-					<div class="col-md-3 sponsor">
-						<h6>A&C Consulting Center</h6>
-						<span>accc.ro</span>
+				<!-- NEW DYNAMIC CAROUSEL -->
+				<div class="container mt-5">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+							<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<div class="row">
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+										</div>
+									</div>
+									<div class="carousel-item">
+										<div class="row">
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+										</div>
+									</div>
+									<div class="carousel-item">
+										<div class="row">
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+											<div class="col-md-3 sponsor">
+												<h6>A&C Consulting Center</h6>
+												<span>accc.ro</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
+							</div>
+
+							<!-- Add more carousel items as needed -->
+						</div>
+						<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
 					</div>
 				</div>
 			</div>

@@ -186,9 +186,9 @@ $result2=mysqli_query($conn, $sql2);
 								$rows= mysqli_fetch_assoc($result4);
 								if($rows!=NULL){
 								echo '<div class="attributes">
-								<span class="tag">'.$rows["name"].'</span><hr/></div>
-								</div>';
+								<span class="tag">'.$rows["name"].'</span><hr/></div>';
 								}
+								echo '</div>';
 								}
 							}
 						?>

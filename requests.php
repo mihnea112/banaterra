@@ -10,13 +10,14 @@ else
 	$text="Logout";
 }
 include 'connection.php';
-$sql = "SELECT * FROM roles";
+$sql = "SELECT * FROM requests ORDER BY `requests`.`id` DESC";
 $resultsss = mysqli_query($conn, $sql);
 if($_SESSION["role"]!="0"){
 	header("location: index.php");
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -119,37 +120,38 @@ if($_SESSION["role"]!="0"){
 
 		<section class="banaterra sect-padding after-sect-padding">
 			<div class="container">
-			<div class="row">
-					<div class="col-md-4">
-						<h1>Roles</h1>
-					</div>
-					<div class="col-md-8 chooser">
-						<button class="btn" type="button" onclick="location.href='editRoles.php?type=add&id=0'">Add Roles</button>
-					</div>
-				</div>
+            <table>
+                <tr>
+                    <th><h5>Status</h5></th>
+                    <th><h5>Action Type</h5></th>
+                    <th><h5>Modify Location</h5></th>
+                    <th><h5>Old ID</h5></th>
+					<th><h5>New ID</h5></th>
+                    <th><h5>User ID</h5></th>
+                    <th><h5>Approve/Deny</h5></th>
+
+                </tr>
 						<?php
 						include 'connection.php';
 						while($row= mysqli_fetch_assoc($resultsss))
 							{	
-                                $tag_id=$row["tag"];
-								$sql4="SELECT * FROM tag WHERE id = $tag_id";
-								$result4 = mysqli_query($conn, $sql4);
-								$rows= mysqli_fetch_assoc($result4);
-                                $lang_id=$row["lang"];
-								$sql5="SELECT * FROM lang WHERE lang_id = $lang_id";
-								$result5 = mysqli_query($conn, $sql5);
-								$rowss= mysqli_fetch_assoc($result5);
-								echo '<div class="row">
-								<div class="col-md-4 icons">
-									<button class="btn" onclick="location.href='."'editRoles.php?type=edit&id=".$row["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button>
-								</div>
-								<div class="col-md-8">
-								<p class="news">Name:'.$row["name"].'<br>Edit:'.$row["edit"].'<br>Add:'.$row["plus"].'<br>Delete:'.$row["del"].'<br>Language:'.$rowss["name"].'<br>Tag:'.$rows["name"].'</p></div></div>';
+                            echo '<tr>
+                                    <th>'.$row["status"].'</th>
+                                    <th>'.$row["action_type"].'</th>
+                                    <th>'.$row["modify_type"].'</th>
+                                    <th>'.$row["old_id"].'</th>
+									<th>'.$row["new_id"].'</th>
+                                    <th>'.$row["user_id"].'</th>';
+                                if($row["status"]=="qued")
+                                {
+                                    echo'<th><a href="request_view.php?type='.$row["modify_type"].'&id='.$row["id"].'">View</a><th>';
+                                }
+                                echo'</tr>';
 							}
 						?>
+            </table> 
 			</div>
 		</section>
-
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">

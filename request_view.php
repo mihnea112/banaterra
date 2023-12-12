@@ -9,14 +9,27 @@ else
 	$link="_logout.php";
 	$text="Logout";
 }
-include 'connection.php';
-$sql = "SELECT * FROM roles";
-$resultsss = mysqli_query($conn, $sql);
 if($_SESSION["role"]!="0"){
 	header("location: index.php");
     exit;
 }
+$req_id=$_GET["id"];
+$type=$_GET["type"];
+include 'connection.php';
+$sql = "SELECT * FROM requests WHERE id='$req_id'";
+$resultsss = mysqli_query($conn, $sql);
+$row= mysqli_fetch_assoc($resultsss);
+$old=$row["old_id"];
+$new=$row["new_id"];
+$action=$row["action_type"];
+$sqlo="SELECT * FROM $type WHERE id='$old'";
+$resulto = mysqli_query($conn, $sqlo);
+$rowo= mysqli_fetch_assoc($resulto);
+$sqln="SELECT * FROM $type WHERE id='$new'";
+$resultn = mysqli_query($conn, $sqln);
+$rown= mysqli_fetch_assoc($resultn);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -119,34 +132,39 @@ if($_SESSION["role"]!="0"){
 
 		<section class="banaterra sect-padding after-sect-padding">
 			<div class="container">
-			<div class="row">
-					<div class="col-md-4">
-						<h1>Roles</h1>
-					</div>
-					<div class="col-md-8 chooser">
-						<button class="btn" type="button" onclick="location.href='editRoles.php?type=add&id=0'">Add Roles</button>
-					</div>
-				</div>
-						<?php
-						include 'connection.php';
-						while($row= mysqli_fetch_assoc($resultsss))
-							{	
-                                $tag_id=$row["tag"];
-								$sql4="SELECT * FROM tag WHERE id = $tag_id";
-								$result4 = mysqli_query($conn, $sql4);
-								$rows= mysqli_fetch_assoc($result4);
-                                $lang_id=$row["lang"];
-								$sql5="SELECT * FROM lang WHERE lang_id = $lang_id";
-								$result5 = mysqli_query($conn, $sql5);
-								$rowss= mysqli_fetch_assoc($result5);
-								echo '<div class="row">
-								<div class="col-md-4 icons">
-									<button class="btn" onclick="location.href='."'editRoles.php?type=edit&id=".$row["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button>
-								</div>
-								<div class="col-md-8">
-								<p class="news">Name:'.$row["name"].'<br>Edit:'.$row["edit"].'<br>Add:'.$row["plus"].'<br>Delete:'.$row["del"].'<br>Language:'.$rowss["name"].'<br>Tag:'.$rows["name"].'</p></div></div>';
-							}
-						?>
+                <h1>Request <?php echo $req_id;?></h1>
+            <table>
+                <tr>
+                    <?php
+                        if($rowo!=NULL)
+                        {
+                        echo'<th><h5>Old Version</h5></th>';
+                        }
+                        else{
+                            echo'<th><h5>Tag</h5></th>';
+                        }
+                    ?>
+                    <th><h5>New Version</h5></th>
+                </tr>
+                    <?php
+                        if($rowo==NULL)
+                        {
+                            foreach($rown as $name=>$const){
+                                echo '<tr><td>'.$name.'</td><td>'.$const.'</td></tr>';
+                            }
+                        }
+                        else
+                        {
+                            foreach(array_combine($rowo,$rown) as $name=>$const){
+                                echo '<tr><td>'.$name.'</td><td>'.$const.'</td></tr>';
+                            }
+                        }
+                    ?>
+            </table> 
+            <div class="row sect-padding">
+                <a class="btn btn-success" href="_editRequest.php?stat=apr&id=<?php echo $row["id"];?>&loc=<?php echo$type;?>&type=<?php echo $action?>">Approve</a>
+                <a class="btn btn-danger" href="_editRequest.php?stat=den&id=<?php echo $row["id"];?>&loc=<?php echo$type;?>&type=<?php echo $action?>">Deny</a>
+            </div>
 			</div>
 		</section>
 

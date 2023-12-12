@@ -9,7 +9,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 if($_SESSION["role"]=="0"){
 	$role='<li class="nav-item">
-	<a class="nav-link white-txt" href="logs.php">Logs</a>
+	<a class="nav-link white-txt" href="requests.php">Request</a>
 </li>
 <li class="nav-item">
 	<a class="nav-link white-txt" href="users.php">Users</a>

@@ -124,6 +124,7 @@ if($_SESSION["role"]!="0"){
                 <tr>
                     <th><h5>ID</h5></th>
                     <th><h5>Email</h5></th>
+					<th><h5>Language</h5></th>
                     <th><h5>Role</h5></th>
                     <th><h5>Edit</h5></th>
                 </tr>
@@ -133,7 +134,8 @@ if($_SESSION["role"]!="0"){
 							{	
                             echo '<tr>
                                     <td>'.$row["id"].'</td>
-                                    <td>'.$row["email"].'</td>';
+                                    <td>'.$row["email"].'</td>								</td>
+                                    <td>'.$row["lang_id"].'</td>';
                                 $role_id=$row["role"];
                                 $sql3 = "SELECT * FROM roles WHERE id='$role_id'";
                                 $resultss = mysqli_query($conn, $sql3);
@@ -145,7 +147,7 @@ if($_SESSION["role"]!="0"){
                                 else{
                                     echo'<td> 0 </td>';
                                 }
-                                echo '<td><button class="btn" onclick="location.href='."'editRoles.php?type=edit&id=".$row["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button></td>
+                                echo '<td><button class="btn" onclick="location.href='."'editUser.php?type=edit&id=".$row["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button></td>
                                 </tr>';
 							}
 						?>
