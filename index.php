@@ -127,7 +127,7 @@ if($_SESSION["role"]=="0"){
 						<div class="attributes">
 							<span class="tag">Cunoasterea naturii umane</span>
 							<span class="tag">Prietenie</span>
-							<span class="tag">Lorem ipsum</span>
+							<!-- <span class="tag">Lorem ipsum</span> -->
 						</div>
 					</div>
 					<div class="col-md-8">
@@ -210,18 +210,10 @@ if($_SESSION["role"]=="0"){
 					</div>
 					<div class="col-md-8">
 						<div class="scroll">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non sodales erat. Donec facilisis erat at
-							tempus rutrum. Maecenas convallis tellus in risus pretium, id vulputate dolor porta. Suspendisse potenti.
-							Morbi mollis nisi a volutpat bibendum. Etiam euismod nunc sodales, euismod orci molestie, tempus ante.
-							Nulla mollis velit vitae felis sollicitudin, at euismod justo mattis. In luctus mauris sed erat maximus
-							dictum. In sagittis lectus iaculis ullamcorper finibus. Nulla ultrices vel dui porttitor sagittis. Cras
-							faucibus volutpat velit id eleifend. Cras arcu arcu, vestibulum vel lorem eu, rutrum viverra urna. Sed
-							iaculis velit sit amet mi tincidunt, ac porttitor felis eleifend. Duis turpis magna, ultricies quis
-							ullamcorper vitae, maximus ut ligula. Quisque vel iaculis neque. In a sem suscipit, sollicitudin tellus
-							sed, dictum purus. Nullam molestie erat nec eleifend tempor. Aliquam in dolor a ex accumsan malesuada ut
-							ut quam. Sed pulvinar porttitor auctor. Curabitur mattis nulla id leo consectetur, non eleifend augue
-							ornare. Morbi id neque volutpat, feugiat nunc quis, rhoncus massa. Nunc turpis augue, elementum in viverra
-							nec, hendrerit id orci.
+							O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații.
+Filosofia, "iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și înălțimea, atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi sau a nu fi", în spatele celor spuse, ceea ce nu se poate rosti.
+Viețile și experiențele noastre individuale și colective sunt modelate de filosofiile noastre individuale și colective de viață.
+Explorați înțelepciunea veacurilor cu colecția noastră de citate filosofice. Descoperiți idei de la gânditori din toate secolele și contribuiți cu propriile dvs. traduceri în limbile lipsă. Alăturați-vă astăzi comunității noastre de exploratori filosofici!
 						</div>
 					</div>
 				</div>

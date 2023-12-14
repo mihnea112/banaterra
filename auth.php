@@ -176,11 +176,12 @@ $result2=mysqli_query($conn, $sql2);
 								if($row2["active"]==1){
 								echo '<div class="row">
 								<div class="col-md-4 icons">
+								<!-- RELEASE 2
 									<i class="bi bi-share"></i>
 									
 									<i class="bi bi-heart"></i>
 			
-									<i class="bi bi-music-note-beamed"></i>
+									<i class="bi bi-music-note-beamed"></i> -->
 			
 									<button class="btn" onclick="location.href='."'editQuotes.php?type=edit&id=".$row2["id"]."'".'"><i class="bi bi-pencil-square"></i> Edit </button>
 								</div>
