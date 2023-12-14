@@ -159,7 +159,12 @@ else
 						>
 					</div>
 					<div class="col-md-8">
-						<p>69 years | 69 months | 69 days | 69 hours | 69 minutes and 69 seconds</p>
+						<p><?php include "_mm.php"; echo "Years: $years | ";
+echo "Months: $months | ";
+echo "Days: $days | ";
+echo "Hours: $hours | ";
+echo "Minutes: $minutes | ";
+echo "Seconds: $seconds ";?></p>
 					</div>
 				</div>
 				<div class="row sect-padding">
@@ -168,6 +173,7 @@ else
 					</div>
 					<div class="col-md-8">
 						<div class="dropdown">
+							<!-- RELEASE 2 -->
 							<button
 								class="btn dropdown-toggle btn-show-more"
 								type="button"
@@ -175,15 +181,18 @@ else
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false">
-								Popular
+								Compara cu
 							</button>
 							<div class="dropdown-menu btn-show-more" aria-labelledby="dropdownMenuButton2">
-								<a class="dropdown-item" href="#">Opt1</a>
-								<a class="dropdown-item" href="#">Opt2</a>
-								<a class="dropdown-item" href="#">Opt3</a>
+								<a class="dropdown-item" href="#">Media vârstei din Ro (80 de ani)</a>
 							</div>
 						</div>
-						<p class="sect-padding">0 years | 0 months || 0 days | 0 hours | 0 minutes and 10 seconds</p>
+						<p class="sect-padding"><?php include "_mm.php"; echo "Years: $yearsl | ";
+echo "Months: $monthsl | ";
+echo "Days: $daysl | ";
+echo "Hours: $hoursl | ";
+echo "Minutes: $minutesl | ";
+echo "Seconds: $secondsl ";?></p>
 					</div>
 				</div>
 
@@ -214,12 +223,16 @@ else
 						</thead>
 
 						<tbody>
-
-							<tr>
-								<td>Mihai Emimescu</td>
-								<td>150 ani</td>
-							</tr>
-
+							<?php
+							include "_mm.php";
+							while($rowb = mysqli_fetch_assoc($resultb))
+							{
+								echo "<tr>
+								<td>".$rowb["name"]."</td>
+								<td>".$rowb["age"]."</td>
+								</tr>";
+							}
+							?>
 						</tbody>
 
 						</table>
@@ -244,15 +257,18 @@ else
 						</thead>
 
 						<tbody>
-
-							<tr>
-								<td>Mihai Emimescu
-									<br>
-									<span>Poet</span>
-								</td>
-								<td>150 ani</td>
-							</tr>
-
+						<?php
+							include "_mm.php";
+							while($rowl = mysqli_fetch_assoc($resultl))
+							{
+								echo "<tr>
+								<td>".$rowl["name"]."
+								<br>
+									<span>".$rowl["det"]."</span></td>
+								<td>".$rowl["age"]."</td>
+								</tr>";
+							}
+							?>
 						</tbody>
 
 						</table>
@@ -277,15 +293,18 @@ else
 						</thead>
 
 						<tbody>
-
-							<tr>
-								<td>Mihai Emimescu
-									<br>
-									<span>Poet</span>
-								</td>
-								<td>150 ani</td>
-							</tr>
-
+						<?php
+							include "_mm.php";
+							while($rowa = mysqli_fetch_assoc($resulta))
+							{
+								echo "<tr>
+								<td>".$rowa["name"]."
+								<br>
+									<span>".$rowa["det"]."</span></td>
+								<td>".$rowa["age"]."</td>
+								</tr>";
+							}
+							?>
 						</tbody>
 
 						</table>
@@ -310,15 +329,18 @@ else
 						</thead>
 
 						<tbody>
-
-							<tr>
-								<td>Mihai Emimescu
-									<br>
-									<span>Poet</span>
-								</td>
-								<td>150 ani</td>
-							</tr>
-
+						<?php
+							include "_mm.php";
+							while($rowp = mysqli_fetch_assoc($resultp))
+							{
+								echo "<tr>
+								<td>".$rowp["name"]."
+								<br>
+									<span>".$rowp["det"]."</span></td>
+								<td>".$rowp["age"]."</td>
+								</tr>";
+							}
+							?>
 						</tbody>
 
 						</table>

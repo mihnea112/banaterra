@@ -1,0 +1,33 @@
+<?php
+include "connection.php";
+session_start();
+$user_id=$_SESSION["id"];
+$sqlu="SELECT b_date FROM user WHERE id=$user_id";
+$resultu=mysqli_query($conn, $sqlu);
+$rowu=mysqli_fetch_assoc($resultu);
+$birthdate = new DateTime($rowu["b_date"]); 
+$currentDate = new DateTime();
+$interval = $birthdate->diff($currentDate);
+$deathDate=$birthdate->add(new DateInterval('P80Y'));
+$interval2= $currentDate->diff($deathDate);
+$years = $interval->y;
+$months = $interval->m;
+$days = $interval->d;
+$hours = $interval->h;
+$minutes=$interval->i;
+$seconds = $interval->s;
+$yearsl=$interval2->y;
+$monthsl = $interval2->m;
+$daysl = $interval2->d;
+$hoursl = $interval2->h;
+$minutesl =$interval2->i;
+$secondsl = $interval2->s;
+$sqlb="SELECT name, det, age FROM `longeviv` WHERE `type`=1 LIMIT 3";
+$sqll="SELECT name, det, age FROM `longeviv` WHERE `type`=2 LIMIT 3";
+$sqla="SELECT name, det, age FROM `longeviv` WHERE `type`=3 LIMIT 3";
+$sqlp="SELECT name, det, age FROM `longeviv` WHERE `type`=4 LIMIT 3";
+$resultb = mysqli_query($conn, $sqlb);
+$resultl = mysqli_query($conn, $sqll);
+$resulta = mysqli_query($conn, $sqla);
+$resultp = mysqli_query($conn, $sqlp);
+?>
