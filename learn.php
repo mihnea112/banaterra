@@ -9,6 +9,8 @@ else
 	$link="_logout.php";
 	$text="Logout";
 }
+$lang1=$_GET['f_lang'];
+$lang2=$_GET['s_lang'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,45 +150,45 @@ else
 				</div>
 			</div>
 		</section>
-
 		<section class="white-bg">
 			<div class="container cont-2-padding" style="display:flex">
-                
-				<div class="dropdown">
-					<button
-						class="btn dropdown-toggle"
-						type="button"
-						id="dropdownMenuButton"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
-						English
-					</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
-				</div>
-
-				<div class="dropdown">
-					<button
-						class="btn dropdown-toggle"
-						type="button"
-						id="dropdownMenuButton"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
-						English
-					</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
-				</div>
+			<form action="">
+			<select class="no-bg no-out-focus " data-width="fit" id="select_lang1">
+					<?php
+						include "lang.php";
+						while($row= mysqli_fetch_assoc($result))
+						{
+							echo '<option value="'.$row["lang_id"].'">'.$row["name"].'</option>';
+						}
+						?>
+					</select>
+			<select class="no-bg no-out-focus" data-width="fit" id="select_lang2" >
+					<?php
+						include "lang.php";
+						while($row= mysqli_fetch_assoc($result))
+						{
+							echo '<option value="'.$row["lang_id"].'">'.$row["name"].'</option>';
+						}
+						?>
+					</select>
 			</div>
 		</section>
+		<script>
+ 		 // Function to handle the change event of the dropdowns
+		function onChange() {
+			var select1 = document.getElementById('select_lang1').value;
+			var select2 = document.getElementById('select_lang2').value;
+			
+			// Construct the URL with parameters
+			var url = 'learn.php?f_lang=' + select1 + '&s_lang=' + select2;
+			console.log('select1');
+			// Redirect to the PHP script with the constructed URL
+			window.location.href = url;
+		}
+  		// Event listeners for the change events of the dropdowns
+  		document.getElementById('select_lang1').addEventListener('change', onChange);
+  		document.getElementById('select_lang2').addEventListener('change', onChange);
+		</script>
 
 		<section class="learn container after-sect-padding">
 			<div class="row">
@@ -194,9 +196,8 @@ else
 					<img src="images/test.jpg" class="autor" />
 					<h4>Müller Péter</h4>
 					<div class="attributes">
-						<span class="tag">Cunoasterea naturii umane</span>
-						<span class="tag">Prietenie</span>
-						<span class="tag">Lorem ipsum</span>
+						<span class="tag"><?php echo $lang1;?></span>
+						<span class="tag"><?php echo $lang2;?></span>
 					</div>
 					<div class="action-btns">
 						<button class="btn">
@@ -210,71 +211,43 @@ else
 						</button>
 					</div>
 				</div>
-				<div class="col-md-7 bborder">
-					<p class="news bborder">
+				<div class="col-md-8 bborder">
+					<div class="row bborder">
+						<div class="col-md-11 ">
+						<p class="news ">
 						O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații. Filosofia,
 						"iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și înălțimea,
 						atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi sau a nu fi",
 						în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre individuale și colective
 						sunt modelate de filosofiile noastre individuale și colective de viață.
-					</p>
-					<p class="news">
+						</p>
+						</div>
+						<div class="col-md-1">
+							<button class="btn">
+								<i class="bi bi-pencil-square"> Edit</i>
+							</button>
+						</div>
+					</div>
+					<div class="row sect-padding">
+						<div class="col-md-11 ">
+						<p class="news ">
 						O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații. Filosofia,
 						"iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și înălțimea,
 						atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi sau a nu fi",
 						în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre individuale și colective
 						sunt modelate de filosofiile noastre individuale și colective de viață.
-					</p>
-				</div>
+						</p>
+						</div>
+						<div class="col-md-1">
+							<button class="btn">
+								<i class="bi bi-pencil-square"> Edit</i>
+							</button>
+						</div>
+					</div>
 
-				<div class="col-md-1">
-					<button class="btn">
-						<i class="bi bi-pencil-square"> Edit</i>
-					</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 main-author bborder">
-					<img src="images/test.jpg" class="autor" />
-					<h4>Müller Péter</h4>
-					<div class="attributes">
-						<span class="tag">Cunoasterea naturii umane</span>
-						<span class="tag">Prietenie</span>
-						<span class="tag">Lorem ipsum</span>
 					</div>
-					<div class="action-btns">
-						<button class="btn">
-							<i class="bi bi-heart"></i>
-						</button>
-						<button class="btn">
-							<i class="bi bi-music-note-beamed"></i>
-						</button>
-						<button class="btn">
-							<i class="bi bi-share"></i>
-						</button>
-					</div>
-				</div>
-				<div class="col-md-7 bborder">
-					<p class="news bborder">
-						O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații. Filosofia,
-						"iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și înălțimea,
-						atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi sau a nu fi",
-						în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre individuale și colective
-						sunt modelate de filosofiile noastre individuale și colective de viață.
-					</p>
-					<p class="news">
-						O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații. Filosofia,
-						"iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și înălțimea,
-						atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi sau a nu fi",
-						în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre individuale și colective
-						sunt modelate de filosofiile noastre individuale și colective de viață.
-					</p>
-				</div>
-				<div class="col-md-1">
-					<button class="btn">
-						<i class="bi bi-pencil-square"> Edit</i>
-					</button>
-				</div>
+
+
 			</div>
 		</section>
 

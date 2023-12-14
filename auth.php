@@ -8,6 +8,13 @@ else
 {
 	$link="_logout.php";
 	$text="Logout";
+	if($_SESSION["lang"]!=0)
+	{
+		$lang=$_SESSION["lang"];
+	}
+	else{
+		$lang="77";
+	}
 }
 $auth_id=$_GET['id'];
 include 'connection.php';
@@ -15,6 +22,7 @@ $sql = "SELECT * FROM autori WHERE id = $auth_id";
 $result = mysqli_query($conn, $sql);
 $row= mysqli_fetch_assoc($result);
 $sql2="SELECT * FROM quotes WHERE aut_id = $auth_id";
+$rest="AND lang_id= $lang";
 $result2=mysqli_query($conn, $sql2);
 ?>
 

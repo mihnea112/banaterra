@@ -97,13 +97,13 @@ if($_SESSION["role"]=="0"){
 										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
 									<?php echo $role?>
 								</ul>

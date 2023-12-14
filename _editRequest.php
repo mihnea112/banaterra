@@ -66,7 +66,7 @@ else if($type==="edit" && $status=="online")
     }
 }
 else{
-    $sqlr="UPDATE $loc SET active='1' WHERE id='$new'";
+    $sqlr="UPDATE requests SET status='$status' WHERE id='$id'";
     $sqlu=NULL;
 }
 if($sqlu==NULL)

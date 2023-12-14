@@ -3,11 +3,13 @@ session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	$link="login.php";
 	$text="Login";
+	$displaylog="d-none";
 }
 else
 {
 	$link="_logout.php";
 	$text="Logout";
+	$display_logout="d-none";
 }
 ?>
 <!DOCTYPE html>
@@ -125,7 +127,7 @@ else
 
 		<!-- start MAIN PAGE CONTENT -->
 
-		<section class="banaterra sect-padding">
+		<section class="banaterra sect-padding after-sect-padding">
 			<div class="container">
 				<div class="row sect-padding">
 					<div class="col-md-4">
@@ -146,6 +148,7 @@ else
 						</p>
 					</div>
 				</div>
+				<div class="<?php echo $displaylog;?>">
 				<div class="row sect-padding">
 					<div class="col-md-4">
 						<h5>Timpul tău petrecut pe pământ</h5>
@@ -176,6 +179,17 @@ else
 							mediilor sperantei de viatã. Mai degraba un avertisment decât o garantie.
 						</p>
 					</div>
+				</div>
+				</div>
+				<div class="<?php echo $display_logout;?>">
+				<div class="row sect-padding">
+					<div class="col-md-4">
+						<h5>Nu esti Autentificat</h5>
+					</div>
+					<div class="col-md-8">
+						<a href="login.php">Login</a>
+					</div>
+				</div>
 				</div>
 			</div>
 		</section>

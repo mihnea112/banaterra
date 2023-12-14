@@ -18,6 +18,7 @@ if($types==="edit")
 }
 else{
 	$row3['aut_id']=$quote_id;
+	$transate="d-none";
 }
 ?>
 <!DOCTYPE html>
@@ -132,6 +133,7 @@ else{
 				<div class="cell">
 					<section class="highlighted cont-2-padding">
 						<h1 class="page-heading"><?php echo $types;?> Quotes</h1>
+						<button class="btn no-out-focus <?php echo $transate;?>" onclick="location.href='editQuotes.php?type=translate&id=<?php echo$quote_id;?>'">Translate</button>
 					</section>
 					<section class="cont-2-padding text-center">
 						<form action="_editQuotes.php?type=<?php echo $types;?>&id=<?php echo $quote_id;?>&aId=<?php echo $row3['aut_id'];?>" method="post">
