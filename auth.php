@@ -21,8 +21,7 @@ include 'connection.php';
 $sql = "SELECT * FROM autori WHERE id = $auth_id";
 $result = mysqli_query($conn, $sql);
 $row= mysqli_fetch_assoc($result);
-$sql2="SELECT * FROM quotes WHERE aut_id = $auth_id";
-$rest="AND lang_id= $lang";
+$sql2="SELECT * FROM quotes WHERE aut_id = $auth_id AND lang_id= $lang";
 $result2=mysqli_query($conn, $sql2);
 ?>
 
@@ -63,12 +62,12 @@ $result2=mysqli_query($conn, $sql2);
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 						<?php
 						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
+						while($row10= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row["code"].'"';
-							if($_SESSION["lang"]===$row["lang_id"])
+							echo '<option data-content="'.$row10["code"].'"';
+							if($_SESSION["lang"]===$row10["lang_id"])
 								echo"selected";
-							echo '>'.$row["name"].'</option>';
+							echo '>'.$row10["name"].'</option>';
 						}
 						?>
 					</select>
