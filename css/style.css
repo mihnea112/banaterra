@@ -392,11 +392,26 @@ form {
 
  td{
   border-bottom: #000000 1px solid;
-  background-color: #bcceff;
   padding: 2px;
+ }
+
+ td .world-days{
+    background-color: #bcceff;
+ }
+
+ td span {
+  font-weight: lighter;
+  color: lightgray;
  }
 
  .icons i {
   margin-left: 2%;
   margin-right: 2%;
+ }
+
+ .btn-show-more{
+  width: 100%;
+  text-align: left;
+  border: solid 1px;
+  border-radius: 0;
  }

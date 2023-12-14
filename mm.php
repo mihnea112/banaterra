@@ -166,9 +166,169 @@ else
 						<h5>Timpul estimat de sosire la următorul destin</h5>
 					</div>
 					<div class="col-md-8">
-						<p>0 years | 0 months || 0 days | 0 hours | 0 minutes and 10 seconds</p>
+						<div class="dropdown">
+							<button
+								class="btn dropdown-toggle btn-show-more"
+								type="button"
+								id="dropdownMenuButton2"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false">
+								Popular
+							</button>
+							<div class="dropdown-menu btn-show-more" aria-labelledby="dropdownMenuButton2">
+								<a class="dropdown-item" href="#">Opt1</a>
+								<a class="dropdown-item" href="#">Opt2</a>
+								<a class="dropdown-item" href="#">Opt3</a>
+							</div>
+						</div>
+						<p class="sect-padding">0 years | 0 months || 0 days | 0 hours | 0 minutes and 10 seconds</p>
 					</div>
 				</div>
+
+				<div class="row sect-padding">
+					<div class="col-md-4">
+						<h5>Speranta de viatã pe tări</h5>
+					</div>
+					<div class="col-md-8">
+						<img style="width:100%; height:auto" src="https://upload.wikimedia.org/wikipedia/commons/d/de/Life_Expectancy_2008_Estimates_CIA_World_Factbook.png" alt="Life Expectancy 2008 Estimates CIA World Factbook.png">
+						<a href="https://commons.wikimedia.org/wiki/File:Life_Expectancy_2008_Estimates_CIA_World_Factbook.png#/media/Fișier:Life_Expectancy_2008_Estimates_CIA_World_Factbook.png">Source: Wikipedia</a>
+					</div>
+				</div>
+
+				<div class="row sect-padding">
+					<div class="col-md-4">
+						<h5>Cei mai bătrâni oameni</h5>
+					</div>
+					<div class="col-md-8">
+						
+						
+						<table class="lines">
+
+						<thead>
+							<tr class="bborder">
+								<td>Nume</td>
+								<td>Vârstă</td>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr>
+								<td>Mihai Emimescu</td>
+								<td>150 ani</td>
+							</tr>
+
+						</tbody>
+
+						</table>
+
+					</div>
+				</div>
+
+				<div class="row sect-padding">
+					<div class="col-md-4">
+						<h5>Longeviv biblice</h5>
+					</div>
+					<div class="col-md-8">
+						<button class="btn btn-show-more">Afișează mai mult</button>
+						
+						<table class="lines">
+
+						<thead>
+							<tr class="bborder">
+								<td>Nume</td>
+								<td>Vârstă</td>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr>
+								<td>Mihai Emimescu
+									<br>
+									<span>Poet</span>
+								</td>
+								<td>150 ani</td>
+							</tr>
+
+						</tbody>
+
+						</table>
+
+					</div>
+				</div>
+
+				<div class="row sect-padding">
+					<div class="col-md-4">
+						<h5>Animale</h5>
+					</div>
+					<div class="col-md-8">
+						<button class="btn btn-show-more">Afișează mai mult</button>
+						
+						<table class="lines">
+
+						<thead>
+							<tr class="bborder">
+								<td>Nume</td>
+								<td>Vârstă</td>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr>
+								<td>Mihai Emimescu
+									<br>
+									<span>Poet</span>
+								</td>
+								<td>150 ani</td>
+							</tr>
+
+						</tbody>
+
+						</table>
+
+					</div>
+				</div>
+
+				<div class="row sect-padding">
+					<div class="col-md-4">
+						<h5>Plante</h5>
+					</div>
+					<div class="col-md-8">
+						<button class="btn btn-show-more">Afișează mai mult</button>
+						
+						<table class="lines">
+
+						<thead>
+							<tr class="bborder">
+								<td>Nume</td>
+								<td>Vârstă</td>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr>
+								<td>Mihai Emimescu
+									<br>
+									<span>Poet</span>
+								</td>
+								<td>150 ani</td>
+							</tr>
+
+						</tbody>
+
+						</table>
+
+					</div>
+				</div>
+
+
+
+
+				<!-- SE TERMINA PAGINA - MESAJ TENQ -->
 				<div class="row sect-padding">
 					<div class="col-md-4">
 						<h5>Vã multumim pentru timp, atentie, energie.</h5>
