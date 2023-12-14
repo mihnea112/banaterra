@@ -46,7 +46,7 @@ else if($role=="0" && $type=="edit")
 {
     $act="1";
     $stat="online";
-    $sql="INSERT INTO `quotes`(`quote`, `tag_ids`, `aut_id`, `lang_id`, `user_id`) VALUES ('$quote','$tag[0]','$auth_id','$lang[0]','$user_id')";
+    $sql="UPDATE `quotes` SET `quote`='$quote',`tag_ids`='$tag[0]',`aut_id`='$auth_id',`user_id`='$user_id', `lang_id`='$lang[0]' WHERE `id`=$quote_id";
 }
 else
 {
