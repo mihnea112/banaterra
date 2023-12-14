@@ -357,7 +357,7 @@ if($_SESSION["role"]=="0"){
 					</div>
 					<div class="col-md-8">
 						<p>Culturiile locale sunt de o importanta globala</p>
-						<a href="about.html"><i class="bi bi-arrow-right"></i> Citește mai mult...</a>
+						<a href="about.php"><i class="bi bi-arrow-right"></i> Citește mai mult...</a>
 					</div>
 				</div>
 			</div>

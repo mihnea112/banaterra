@@ -116,7 +116,8 @@ else
 		<section class="">
 			<div class="container cont-2-padding">
 				<div class="row">
-					<div class="col-md-4">
+					<!-- RELEASE 2 -->
+					<!-- <div class="col-md-4">
 						<h1 class="page-heading">Teme populare</h1>
 					</div>
 					<div class="col-md-8 chooser">
@@ -153,7 +154,7 @@ else
 								<a class="dropdown-item" href="#">Something else here</a>
 							</div>
 						</div>
-						<button class="btn" type="button">Login</button>
+						<button class="btn" type="button">Login</button> -->
 					</div>
 				</div>
 			</div>

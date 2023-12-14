@@ -53,12 +53,12 @@ if($type==="edit")
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 						<?php
 						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
+						while($row10= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row["code"].'"';
-							if($_SESSION["lang"]===$row["lang_id"])
+							echo '<option data-content="'.$row10["code"].'"';
+							if($_SESSION["lang"]===$row10["lang_id"])
 								echo"selected";
-							echo '>'.$row["name"].'</option>';
+							echo '>'.$row10["name"].'</option>';
 						}
 						?>
 					</select>

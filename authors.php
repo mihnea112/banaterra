@@ -114,7 +114,8 @@ else
 						<h1>Authors</h1>
 					</div>
 					<div class="col-md-8 chooser">
-						<div class="dropdown">
+						<!-- RELEASE 2 -> 3 -->
+						<!-- <div class="dropdown">
 							<button
 								class="btn dropdown-toggle"
 								type="button"
@@ -145,7 +146,7 @@ else
 								<a class="dropdown-item" href="#">Caca</a>
 								<a class="dropdown-item" href="#">Something else here</a>
 							</div>
-						</div>
+						</div> -->
 						<button class="btn dropdown-toggle" type="button">View all</button>
 						<button class="btn" type="button" onclick="location.href='editAuthors.php?type=add&id=0'">Add Author</button>
 					</div>

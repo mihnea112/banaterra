@@ -129,19 +129,19 @@ $result2=mysqli_query($conn, $sql2);
                 <div class="row">
                     <div class="col-lg-6">
                         <h1 class="page-heading "><?php echo $row["name"];?></h1>
-                        <p>born <b style="font-weight: 700;"><?php echo $row["name"];?></b>, (<?php echo $row["b_date"].",".$row["d_date"]?>)</p>
-                        <div class="attributes">
+                        <p>born <b style="font-weight: 700;"><?php echo $row["name"];?></b>, (<?php echo $row["b_date"]." - ".$row["d_date"]?>)</p>
+						<!-- RELEASE 2-3 -->
+                        <!-- <div class="attributes">
                             <span class="tag">Romana: 10</span>
                             <span class="tag">English: 100</span>
                             <span class="tag">German: 00</span>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="col-lg-6 chooser">
                         <div class="">
                             <button class="btn" type="button" onclick="location.href='editAuthors.php?type=edit&id=<?php echo $auth_id;?>'">Edit Author</button>
                             <button class="btn" type="button" onclick="location.href='editQuotes.php?type=add&id=<?php echo $auth_id;?>'">Add Quotes</button>
-                            <button class="btn" type="button">Login</button>
                         </div>
                     </div>
 
