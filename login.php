@@ -27,10 +27,10 @@
 			crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<section class="nav">
+<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
@@ -41,7 +41,7 @@
 								echo"selected";
 							echo '>'.$row["name"].'</option>';
 						}
-						?>
+					?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -76,17 +76,18 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>

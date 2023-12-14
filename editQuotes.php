@@ -64,7 +64,7 @@ else{
 								echo"selected";
 							echo '>'.$row["name"].'</option>';
 						}
-						?>
+					?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -102,20 +102,15 @@ else{
 										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
-									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>
@@ -123,7 +118,6 @@ else{
 				</div>
 			</div>
 		</section>
-
 		<!-- NAVBAR END -->
 
 		<!-- start MAIN PAGE CONTENT -->

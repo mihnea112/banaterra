@@ -43,7 +43,7 @@ else
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
@@ -54,7 +54,7 @@ else
 								echo"selected";
 							echo '>'.$row["name"].'</option>';
 						}
-						?>
+					?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -100,6 +100,7 @@ else
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>

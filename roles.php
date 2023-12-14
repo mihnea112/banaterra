@@ -50,18 +50,18 @@ if($_SESSION["role"]!="0"){
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-				<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
-						while($row10= mysqli_fetch_assoc($result))
+						while($row= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row10["code"].'"';
-							if($_SESSION["lang"]===$row10["lang_id"])
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
 								echo"selected";
-							echo '>'.$row10["name"].'</option>';
+							echo '>'.$row["name"].'</option>';
 						}
-						?>
+					?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -69,9 +69,7 @@ if($_SESSION["role"]!="0"){
 				</div>
 				<div class="col-md-4 col-4 d-none d-md-block">
 					<form class="d-flex" role="search">
-						<button class="btn no-bg no-out-focus white-txt" type="submit">
-							<i class="bi bi-search"></i>
-						</button>
+						<button class="btn no-bg no-out-focus white-txt" type="submit"><i class="bi bi-search"></i></button>
 						<input
 							class="form-control me-2 no-out-focus no-bg white-txt"
 							type="search"
@@ -109,6 +107,7 @@ if($_SESSION["role"]!="0"){
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>

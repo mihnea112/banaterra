@@ -40,12 +40,12 @@ else
 			crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<section class="nav">
+<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
 					<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-					<?php
+						<?php
 						include "lang.php";
 						while($row= mysqli_fetch_assoc($result))
 						{
@@ -100,6 +100,7 @@ else
 									<li class="nav-item">
 										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
+									<?php echo $role.$logged;?>
 								</ul>
 							</div>
 						</div>

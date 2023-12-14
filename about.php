@@ -1,3 +1,22 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+if($_SESSION["role"]=="0"){
+	$role='<li class="nav-item">
+	<a class="nav-link white-txt" href="requests.php">Request</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link white-txt" href="users.php">Users</a>
+</li>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -31,10 +50,18 @@
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt"><i class="bi bi-person-circle"></i> Login</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-						<option data-content="English">English</option>
-						<option data-content="Español">Español</option>
+					<?php
+						include "lang.php";
+						while($row= mysqli_fetch_assoc($result))
+						{
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
+								echo"selected";
+							echo '>'.$row["name"].'</option>';
+						}
+					?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -42,9 +69,7 @@
 				</div>
 				<div class="col-md-4 col-4 d-none d-md-block">
 					<form class="d-flex" role="search">
-						<button class="btn no-bg no-out-focus white-txt" type="submit">
-							<i class="bi bi-search"></i>
-						</button>
+						<button class="btn no-bg no-out-focus white-txt" type="submit"><i class="bi bi-search"></i></button>
 						<input
 							class="form-control me-2 no-out-focus no-bg white-txt"
 							type="search"
@@ -71,17 +96,18 @@
 										<a class="nav-link white-txt" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="authors.html">Authors</a>
+										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>

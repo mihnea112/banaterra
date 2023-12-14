@@ -49,16 +49,16 @@ if($type==="edit")
 		<section class="nav">
 			<div class="row navrow">
 				<div class="col-md-4 col-sm-4 col-4">
-					<button class="btn no-out-focus white-txt" onclick="location.href='_logout.php'"><i class="bi bi-person-circle"></i> Logout</button>
+					<button class="btn no-out-focus white-txt" onclick="location.href='<?php echo $link;?>'"><i class="bi bi-person-circle"></i> <?php echo $text;?></button>
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
-					<?php
+						<?php
 						include "lang.php";
-						while($row10= mysqli_fetch_assoc($result))
+						while($row= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row10["code"].'"';
-							if($_SESSION["lang"]===$row10["lang_id"])
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
 								echo"selected";
-							echo '>'.$row10["name"].'</option>';
+							echo '>'.$row["name"].'</option>';
 						}
 						?>
 					</select>
@@ -98,20 +98,15 @@ if($type==="edit")
 										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
-									</li>
+									<?php echo $role.$logged;?>
 								</ul>
 							</div>
 						</div>

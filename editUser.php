@@ -54,14 +54,14 @@ if($type==="edit")
 					<select class="no-bg no-out-focus white-txt" data-width="fit">
 					<?php
 						include "lang.php";
-						while($row10= mysqli_fetch_assoc($result))
+						while($row= mysqli_fetch_assoc($result))
 						{
-							echo '<option data-content="'.$row10["code"].'"';
-							if($_SESSION["lang"]===$row10["lang_id"])
+							echo '<option data-content="'.$row["code"].'"';
+							if($_SESSION["lang"]===$row["lang_id"])
 								echo"selected";
-							echo '>'.$row10["name"].'</option>';
+							echo '>'.$row["name"].'</option>';
 						}
-						?>
+					?>
 					</select>
 				</div>
 				<div class="col-md-4 col-sm-4 col-4">
@@ -99,20 +99,15 @@ if($type==="edit")
 										<a class="nav-link white-txt" href="authors.php">Authors</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editAuthors.php">Edit Authors</a>
+										<a class="nav-link white-txt" href="topics.php">Topics</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="topics.html">Topics</a>
+										<a class="nav-link white-txt" href="mm.php">MM</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link white-txt" href="editTopics.php">Edit Topics</a>
+										<a class="nav-link white-txt" href="learn.php">Learn</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="mm.html">MM</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link white-txt" href="learn.html">Learn</a>
-									</li>
+									<?php echo $role?>
 								</ul>
 							</div>
 						</div>
