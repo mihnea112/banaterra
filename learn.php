@@ -9,8 +9,7 @@ else
 	$link="_logout.php";
 	$text="Logout";
 }
-$lang1=$_GET['f_lang'];
-$lang2=$_GET['s_lang'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,103 +151,76 @@ $lang2=$_GET['s_lang'];
 		</section>
 		<section class="white-bg">
 			<div class="container cont-2-padding" style="display:flex">
-			<form action="">
-			<select class="no-bg no-out-focus " data-width="fit" id="select_lang1">
-					<?php
-						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
-						{
-							echo '<option value="'.$row["lang_id"].'">'.$row["name"].'</option>';
-						}
-						?>
-					</select>
-			<select class="no-bg no-out-focus" data-width="fit" id="select_lang2" >
-					<?php
-						include "lang.php";
-						while($row= mysqli_fetch_assoc($result))
-						{
-							echo '<option value="'.$row["lang_id"].'">'.$row["name"].'</option>';
-						}
-						?>
-					</select>
+			<form action="_selectLang.php" method="post">
+				<select class="no-bg no-out-focus " data-width="fit" id="select_lang1" name="select_lang1" >
+						<?php
+							include "lang.php";
+							while($row= mysqli_fetch_assoc($result))
+							{
+								echo '<option value="'.$row["lang_id"].'">'.$row["name"].'</option>';
+							}
+							?>
+				</select>
+				<select class="no-bg no-out-focus" data-width="fit" id="select_lang2" name="select_lang2">
+						<?php
+							include "lang.php";
+							while($row= mysqli_fetch_assoc($result))
+							{
+								echo '<option value="'.$row["lang_id"].'">'.$row["name"].'</option>';
+							}
+							?>
+				</select>
+				<button type="submit" class="btn ">GO</button>
+			</form>
 			</div>
 		</section>
-		<script>
- 		 // Function to handle the change event of the dropdowns
-		function onChange() {
-			var select1 = document.getElementById('select_lang1').value;
-			var select2 = document.getElementById('select_lang2').value;
-			
-			// Construct the URL with parameters
-			var url = 'learn.php?f_lang=' + select1 + '&s_lang=' + select2;
-			console.log('select1');
-			// Redirect to the PHP script with the constructed URL
-			window.location.href = url;
-		}
-  		// Event listeners for the change events of the dropdowns
-  		document.getElementById('select_lang1').addEventListener('change', onChange);
-  		document.getElementById('select_lang2').addEventListener('change', onChange);
-		</script>
-
+	
 		<section class="learn container after-sect-padding">
-			<div class="row">
-				<div class="col-md-4 main-author bborder">
-					<img src="images/test.jpg" class="autor" />
-					<h4>Müller Péter</h4>
-					<div class="attributes">
-						<span class="tag"><?php echo $lang1;?></span>
-						<span class="tag"><?php echo $lang2;?></span>
-					</div>
-					<div class="action-btns">
-						<button class="btn">
-							<i class="bi bi-heart"></i>
-						</button>
-						<button class="btn">
-							<i class="bi bi-music-note-beamed"></i>
-						</button>
-						<button class="btn">
-							<i class="bi bi-share"></i>
-						</button>
-					</div>
-				</div>
-				<div class="col-md-8 bborder">
-					<div class="row bborder">
-						<div class="col-md-11 ">
-						<p class="news ">
-						O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații. Filosofia,
-						"iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și înălțimea,
-						atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi sau a nu fi",
-						în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre individuale și colective
-						sunt modelate de filosofiile noastre individuale și colective de viață.
-						</p>
+			<?php
+			$res=$_SESSION["learn"];
+			foreach($res as $const)
+            {
+						echo'<div class="row">
+						<div class="col-md-4 main-author bborder">
+							<img src="images/test.jpg" class="autor" />
+							<h4>'.$const["auth"].'</h4>
+							<div class="action-btns">
+								<button class="btn">
+									<i class="bi bi-heart"></i>
+								</button>
+								<button class="btn">
+									<i class="bi bi-music-note-beamed"></i>
+								</button>
+								<button class="btn">
+									<i class="bi bi-share"></i>
+								</button>
+							</div>
+						</div>
+						<div class="col-md-8 bborder">
+							<div class="row bborder">
+								<div class="col-md-11 ">
+								<p class="news ">'.$const["lang1"].'
+								</p>
 						</div>
 						<div class="col-md-1">
 							<button class="btn">
-								<i class="bi bi-pencil-square"> Edit</i>
+								<i class="bi bi-pencil-square" onclick="location.href='."'editQuotes.php?type=edit&id=".$const["id1"]."'".'"> Edit</i>
 							</button>
 						</div>
 					</div>
 					<div class="row sect-padding">
 						<div class="col-md-11 ">
-						<p class="news ">
-						O idee bine formulată poate persista în timp, modelând și definind mentalitatea multor generații. Filosofia,
-						"iubirea de înțelepciune", este pragmatismul înțelepților, care au înțeles adâncimea și înălțimea,
-						atemporalitatea și aspațialitatea relativă a existenței noastre, răspunsul la întrebarea "a fi sau a nu fi",
-						în spatele celor spuse, ceea ce nu se poate rosti. Viețile și experiențele noastre individuale și colective
-						sunt modelate de filosofiile noastre individuale și colective de viață.
-						</p>
+						<p class="news ">'.$const["lang2"].'</p>
 						</div>
 						<div class="col-md-1">
 							<button class="btn">
-								<i class="bi bi-pencil-square"> Edit</i>
+								<i class="bi bi-pencil-square" onclick="location.href='."'editQuotes.php?type=edit&id=".$const["id2"]."'".'"> Edit</i>
 							</button>
 						</div>
 					</div>
-
-					</div>
-
-
-			</div>
+					</div>';
+			}
+			?>
 		</section>
 
 		<!-- end MAIN PAGE CONTETN -->
