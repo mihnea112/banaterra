@@ -154,7 +154,7 @@ $result2=mysqli_query($conn, $sql2);
         <div class="container sect-padding after-sect-padding">
             <div class="row">
                 <div class="col-md-4 px-auto">
-                    <img src="images/test.jpg" alt="">
+                    <img src="images/test.jpg" class="autor" alt="">
                 </div>
                 	<div class="col-md-8">
 						<div class="scroll white-bg cont-5-padding">
