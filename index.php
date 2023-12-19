@@ -115,9 +115,7 @@ if($_SESSION["role"]=="0"){
 				</div>
 			</div>
 		</section>
-		<section class="banner">
-			<img src="images/banner.jpg" />
-		</section>
+
 		<section class="topics sect-padding">
 			<div class="container">
 				<div class="row">
@@ -198,6 +196,16 @@ if($_SESSION["role"]=="0"){
 				</div>
 			</div>
 		</section>
+
+		<section class="bcont cont-2-padding top-5-margin btm-5-margin">
+			<span class="btext">Fiecare limbă este o viziune specifică aspura lumii.</span>
+
+			<img src="images/b_home1.jpg" alt="" class="bimg">
+			<img src="images/b_home2.jpg" alt="" class="bimg">
+			<img src="images/b_home3.jpg" alt="" class="bimg">
+
+		</section>
+
 		<section class="sect-padding">
 			<div class="container">
 				<div class="row hello">
@@ -389,6 +397,7 @@ Explorați înțelepciunea veacurilor cu colecția noastră de citate filosofice
 				</div>
 			</div>
 		</section>
+
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">
