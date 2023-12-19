@@ -168,9 +168,19 @@ else
 						?>
 				</div>					
 		</section>
-		<section class="banner">
-			<img src="images/banner_despre.jpg" alt="" />
-		</section>
+
+		<div class="blue-banner top-5-padding btm-5-padding">
+
+			<section class="bcont cont-2-padding ">
+				<span class="btext">Culturile locale sunt de o importanță globală.</span>
+	
+				<img src="images/b_home1.jpg" alt="" class="bimg">
+				<img src="images/b_home2.jpg" alt="" class="bimg">
+				<img src="images/b_home3.jpg" alt="" class="bimg">
+	
+			</section>
+		</div>
+
 		<footer>
 			<div class="container cont-5-padding footer">
 				<div class="row">

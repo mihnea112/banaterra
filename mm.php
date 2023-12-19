@@ -120,9 +120,17 @@ else
 			</div>
 		</section>
 
-		<section class="banner">
-			<img src="images/banner-mm.jpg" />
-		</section>
+		<div class="green-banner top-5-padding btm-5-padding">
+
+			<section class="bcont cont-2-padding ">
+				<span class="btext">Cunoaște-te pe tine însuți.</span>
+	
+				<img src="images/b_mm2.jpg" alt="" class="bimg">
+				<img src="images/b_mm3.jpg" alt="" class="bimg">
+				<img src="images/b_mm1.jpg" alt="" class="bimg">
+	
+			</section>
+		</div>
 
 		<!-- Hero End -->
 

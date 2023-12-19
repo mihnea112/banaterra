@@ -127,32 +127,36 @@ body{
 .bimg{
       height: 100%;
       aspect-ratio: 1;
-      z-index: -1;
+      z-index: 1;
       opacity: 50%;
 }
   
 .btext {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     font-size: 5vw;
     font-family: "ClanProMedium";
     text-transform: uppercase;
 }
 
-
-/* .btext {
-  position: relative;
-  font-size: 5vw;
-  font-family: "ClanProMedium";
-  text-transform: uppercase;
+.blue-banner{
+  background-color: rgb(103, 144, 219);
+  color:white;
 }
 
-.bimg{
-  
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
+.ylw-banner {
+  background-color: rgb(218, 224, 80);
+}
+
+.green-banner{
+  background-color: rgb(113, 190, 103);
+    color: white;
+}
+
+.lightblue-banner{
+  background-color: rgb(191, 205, 251);
+}
+
 
 .sect-padding{
   padding-top: 3%;
@@ -164,6 +168,14 @@ body{
 
 .btm-5-margin{
   margin-bottom: 5%;
+}
+
+.top-5-padding{
+  padding-top: 5%;
+}
+
+.btm-5-padding{
+  padding-bottom: 5%;
 }
 
 .main-author h4{

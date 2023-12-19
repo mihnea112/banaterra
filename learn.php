@@ -126,10 +126,6 @@ else
 			</div>
 		</section>
 
-		<section class="banner">
-			<img src="images/banner-learn.jpg" />
-		</section>
-
 		<!-- Hero End -->
 
 		<!-- start MAIN PAGE CONTENT -->
@@ -223,6 +219,18 @@ else
 			}
 			?>
 		</section>
+
+						<div class="lightblue-banner top-5-padding btm-5-padding">
+
+			<section class="bcont cont-2-padding ">
+				<span class="btext">Construim comunități împreună.</span>
+	
+				<img src="images/b_learn1.jpg" alt="" class="bimg">
+				<img src="images/b_learn2.jpg" alt="" class="bimg">
+				<img src="images/b_learn3.jpg" alt="" class="bimg">
+	
+			</section>
+		</div>
 
 		<!-- end MAIN PAGE CONTETN -->
 

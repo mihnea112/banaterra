@@ -160,9 +160,17 @@ else
 			</div>
 		</section>
 
-		<section class="banner">
-			<img src="images/banner_topics.jpg" />
-		</section>
+		<div class="ylw-banner top-5-padding btm-5-padding">
+
+			<section class="bcont cont-2-padding ">
+				<span class="btext">Educația este cheia transformării</span>
+	
+				<img src="images/b_topics2.jpg" alt="" class="bimg">
+				<img src="images/b_topics3.jpg" alt="" class="bimg">
+				<img src="images/b_topics1.jpg" alt="" class="bimg">
+	
+			</section>
+		</div>
 
 		<!-- Hero End -->
 

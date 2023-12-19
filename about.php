@@ -116,13 +116,21 @@ if($_SESSION["role"]=="0"){
 			</div>
 		</section>
 
-		<section class="banner">
-			<h1 class="cont-2-padding page-heading">Despre noi</h1>
-			<img src="images/banner_despre.jpg" alt="" />
-		</section>
+		<div class="blue-banner top-5-padding btm-5-padding">
+
+			<section class="bcont cont-2-padding ">
+				<span class="btext">Culturile locale sunt de o importanță globală.</span>
+	
+				<img src="images/b_home1.jpg" alt="" class="bimg">
+				<img src="images/b_home2.jpg" alt="" class="bimg">
+				<img src="images/b_home3.jpg" alt="" class="bimg">
+	
+			</section>
+		</div>
 
 		<section class="banaterra sect-padding">
 			<div class="container">
+				<h1 class></h1>
 				<div class="row sect-padding">
 					<div class="col-md-4">
 						<h5>Din Banaterrra, spre sine</h5>
