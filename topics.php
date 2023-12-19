@@ -3,11 +3,25 @@ session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	$link="login.php";
 	$text="Login";
+	if($_SESSION["lang"]!=0)
+	{
+		$lang=$_SESSION["lang"];
+	}
+	else{
+		$lang="77";
+	}
 }
 else
 {
 	$link="_logout.php";
 	$text="Logout";
+	if($_SESSION["lang"]!=0)
+	{
+		$lang=$_SESSION["lang"];
+	}
+	else{
+		$lang="77";
+	}
 }
 
 ?>
@@ -194,10 +208,10 @@ else
 						include "connection.php";
 						if($id!=0)
 						{
-							$sql7="SELECT * FROM `quotes` WHERE `tag_ids`=$id";
+							$sql7="SELECT * FROM `quotes` WHERE `tag_ids`=$id and `active`='1' and lang_id= $lang" ;
 						}
 						else{
-							$sql7="SELECT * FROM `quotes`";
+							$sql7="SELECT * FROM `quotes` WHERE `active`='1' and lang_id= $lang";
 						}
 						$result = mysqli_query($conn, $sql7);
 						while($row=mysqli_fetch_assoc($result))
